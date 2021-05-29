@@ -59,6 +59,3 @@ func QuickSort0(arr []int,leftEnd,rightEnd int){
 	QuickSort0(arr,left+1,rightEnd)
 }
 
-func QuickSort1(arr[]int,leftEnd,rightEnd int){
-	if 
-}
