@@ -8,6 +8,8 @@ import (
 
 
 func main() {
+	fmt.Println(1<<31)
+	fmt.Println(1<<32)
 	t1:=&algo.TreeNode{Val:1}
 	t1.Left=&algo.TreeNode{Val:2}
 	t1.Right=&algo.TreeNode{Val:3}
