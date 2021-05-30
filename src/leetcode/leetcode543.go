@@ -1,6 +1,5 @@
 package leetcode
 
-import "fmt"
 var maxDiameter int=0
 
 func dfs543(root *TreeNode) int {
@@ -11,7 +10,6 @@ func dfs543(root *TreeNode) int {
 	rDiameter:=dfs543(root.Right)
 	if lDiameter+rDiameter>maxDiameter{
 		maxDiameter=lDiameter+rDiameter
-		fmt.Println("md修改了",maxDiameter)
 	}
 	if lDiameter>=rDiameter{
 		return lDiameter+1
