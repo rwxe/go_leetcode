@@ -11,6 +11,8 @@ func (s *set)Add(n int){
 }
 
 func main() {
-	fmt.Println(leetcode.ThreeSum1([]int{-1,0,1,2,-1,-4}))
+	fmt.Println(leetcode.Subsets0([]int{1,2,3}))
+	fmt.Println(leetcode.Subsets1([]int{1,2,3}))
+	fmt.Println(leetcode.Subsets2([]int{1,2,3}))
 
 }
