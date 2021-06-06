@@ -1,7 +1,5 @@
 package leetcode
 
-import "fmt"
-
 
 type LRUDoubleListNode struct {
 	prev, next *LRUDoubleListNode
@@ -46,8 +44,9 @@ func (l *LRUDoubleList) RemoveTail() *LRUDoubleListNode {
 	if l.Head.next == l.Tail {
 		return nil
 	}
-	l.Remove(l.Tail.prev)
-	return l.Tail.prev
+	node := l.Tail.prev
+	l.Remove(node)
+	return node
 }
 
 type LRUCache struct {
@@ -58,7 +57,7 @@ type LRUCache struct {
 
 func NewLRUCache(capacity int) LRUCache {
 	lru := LRUCache{capacity: capacity}
-	lru.keymap=make(map[int]*LRUDoubleListNode)
+	lru.keymap = make(map[int]*LRUDoubleListNode)
 	lru.cacheList = NewLRUDoubleList()
 	return lru
 }
@@ -69,7 +68,7 @@ func (lru *LRUCache) makeRecently(key int) {
 }
 func (lru *LRUCache) addItem(key, Value int) {
 	node := &LRUDoubleListNode{Key: key, Value: Value}
-	lru.keymap[key]=node
+	lru.keymap[key] = node
 	lru.cacheList.AddToHead(node)
 }
 func (lru *LRUCache) removeItem(key int) {
@@ -82,28 +81,30 @@ func (lru *LRUCache) removeLeast() {
 	delete(lru.keymap, node.Key)
 }
 
-//func Constructor146(capacity int) LRUCache {
-//}
-//
+func Constructor146(capacity int) LRUCache {
+	return NewLRUCache(capacity)
+}
+
 func (lru *LRUCache) Get(key int) int {
-	if item,ok:=lru.keymap[key];ok{
+	if item, ok := lru.keymap[key]; ok {
+		lru.makeRecently(item.Key)
 		return item.Value
-	}else{
+	} else {
 		return -1
 	}
 
 }
+
 //
 func (lru *LRUCache) Put(key int, value int) {
-	if item,ok:=lru.keymap[key];ok{
-		item.Value=value
+	if item, ok := lru.keymap[key]; ok {
+		item.Value = value
 		lru.makeRecently(item.Key)
-	}else{
-		if len(lru.keymap)>=lru.capacity{
+	} else {
+		if len(lru.keymap) >= lru.capacity {
 			lru.removeLeast()
 		}
-		lru.addItem(key,value)
+		lru.addItem(key, value)
 	}
-	fmt.Println(len(lru.keymap),lru.capacity,lru.keymap)
 }
 
