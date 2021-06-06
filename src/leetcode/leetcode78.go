@@ -13,6 +13,7 @@ func bt78(nums []int, pos int, list []int, result *[][]int) {
 
 }
 
+
 func Subsets0(nums []int) [][]int {
 	result := make([][]int, 0)
 	bt78(nums, 0, []int{}, &result)
@@ -42,12 +43,29 @@ func Subsets2(nums []int) [][]int {
 	for i := 0; i < len(nums); i++ {
 		resultLen:=len(result)
 		for j := 0; j < resultLen; j++ {
-			list := make([]int, len(result[j]))
-			copy(list, result[j])
+			list := append([]int(nil),result[j]...)
 			list = append(list, nums[i])
 			result = append(result, list)
 		}
 	}
 	return result
 
+}
+
+func Subsets3(nums []int) [][]int {
+	result:=make([][]int,0)
+    set := []int{}
+    var dfs func(int)
+    dfs = func(cur int) {
+        if cur == len(nums) {
+            result = append(result, append([]int(nil), set...))
+            return
+        }
+        set = append(set, nums[cur])
+        dfs(cur + 1)
+        set = set[:len(set)-1]
+        dfs(cur + 1)
+    }
+    dfs(0)
+    return result
 }

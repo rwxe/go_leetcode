@@ -20,7 +20,7 @@ func main() {
 	t1.Right.Left=&algo.TreeNode{Val:6}
 	t1.Right.Right=&algo.TreeNode{Val:7}
 	print(t1,"\n")
-	fmt.Println(leetcode.Subset474([]string{"a","b","c"}))
-	fmt.Println(leetcode.Subset474([]string{"10", "0001", "111001", "1", "0"}))
+	fmt.Println(leetcode.Subsets0([]int{1,2,3}))
+	fmt.Println(leetcode.Subsets3([]int{1,2,3}))
 
 }
