@@ -1,110 +1,117 @@
 package leetcode
 
-
+// 双向链表中的节点
 type LRUDoubleListNode struct {
 	prev, next *LRUDoubleListNode
-	Key, Value int
+	key, value int
 }
 
+// 双向链表
 type LRUDoubleList struct {
-	Head, Tail *LRUDoubleListNode
+	head, tail *LRUDoubleListNode
 }
 
+// 构造一个初始双向链表
 func NewLRUDoubleList() LRUDoubleList {
 	l := LRUDoubleList{}
-	l.Head = &LRUDoubleListNode{}
-	l.Tail = &LRUDoubleListNode{}
-	l.Head.next = l.Tail
-	l.Tail.prev = l.Head
+	l.head = &LRUDoubleListNode{}
+	l.tail = &LRUDoubleListNode{}
+	l.head.next = l.tail
+	l.tail.prev = l.head
 	return l
 }
 
-func (l *LRUDoubleList) DebugPrint() []int {
-	result := make([]int, 0)
-	p := l.Head
-	for p != nil {
-		result = append(result, p.Value)
-		p = p.next
-	}
-	return result
-}
-
-func (l *LRUDoubleList) AddToHead(node *LRUDoubleListNode) {
-	headNext := l.Head.next
-	l.Head.next = node
+// 将节点添加到链表首
+func (l *LRUDoubleList) addToHead(node *LRUDoubleListNode) {
+	headNext := l.head.next
+	l.head.next = node
 	headNext.prev = node
 	node.next = headNext
-	node.prev = l.Head
+	node.prev = l.head
 }
-func (l *LRUDoubleList) Remove(node *LRUDoubleListNode) {
+
+// 移除节点
+func (l *LRUDoubleList) remove(node *LRUDoubleListNode) {
 	node.prev.next = node.next
 	node.next.prev = node.prev
 }
-func (l *LRUDoubleList) RemoveTail() *LRUDoubleListNode {
-	if l.Head.next == l.Tail {
+
+// 移除链表尾节点
+func (l *LRUDoubleList) removeFromTail() *LRUDoubleListNode {
+	if l.head.next == l.tail {
 		return nil
 	}
-	node := l.Tail.prev
-	l.Remove(node)
+	node := l.tail.prev
+	l.remove(node)
 	return node
 }
 
+// 缓存结构
 type LRUCache struct {
 	capacity  int
 	keymap    map[int]*LRUDoubleListNode
-	cacheList LRUDoubleList
+	cache LRUDoubleList
 }
 
+// 构造一个缓存
 func NewLRUCache(capacity int) LRUCache {
 	lru := LRUCache{capacity: capacity}
 	lru.keymap = make(map[int]*LRUDoubleListNode)
-	lru.cacheList = NewLRUDoubleList()
+	lru.cache = NewLRUDoubleList()
 	return lru
 }
-func (lru *LRUCache) makeRecently(key int) {
+
+// 设某个键为最近访问
+func (lru *LRUCache) setMostRecently(key int) {
 	node := lru.keymap[key]
-	lru.cacheList.Remove(node)
-	lru.cacheList.AddToHead(node)
+	lru.cache.remove(node)
+	lru.cache.addToHead(node)
 }
+
+// 新增元素
 func (lru *LRUCache) addItem(key, Value int) {
-	node := &LRUDoubleListNode{Key: key, Value: Value}
+	node := &LRUDoubleListNode{key: key, value: Value}
 	lru.keymap[key] = node
-	lru.cacheList.AddToHead(node)
+	lru.cache.addToHead(node)
 }
+
+// 移除元素
 func (lru *LRUCache) removeItem(key int) {
 	node := lru.keymap[key]
-	lru.cacheList.Remove(node)
+	lru.cache.remove(node)
 	delete(lru.keymap, key)
 }
-func (lru *LRUCache) removeLeast() {
-	node := lru.cacheList.RemoveTail()
-	delete(lru.keymap, node.Key)
+
+// 移除最久未访问元素
+func (lru *LRUCache) removeLeastRecently() {
+	node := lru.cache.removeFromTail()
+	delete(lru.keymap, node.key)
 }
 
-func Constructor146(capacity int) LRUCache {
-	return NewLRUCache(capacity)
-}
-
+// 读取操作
 func (lru *LRUCache) Get(key int) int {
 	if item, ok := lru.keymap[key]; ok {
-		lru.makeRecently(item.Key)
-		return item.Value
+		lru.setMostRecently(item.key)
+		return item.value
 	} else {
 		return -1
 	}
 
 }
 
-//
+// 新增操作
 func (lru *LRUCache) Put(key int, value int) {
 	if item, ok := lru.keymap[key]; ok {
-		item.Value = value
-		lru.makeRecently(item.Key)
+		item.value = value
+		lru.setMostRecently(item.key)
 	} else {
 		if len(lru.keymap) >= lru.capacity {
-			lru.removeLeast()
+			lru.removeLeastRecently()
 		}
 		lru.addItem(key, value)
 	}
 }
 
+func Constructor146(capacity int) LRUCache {
+	return NewLRUCache(capacity)
+}
