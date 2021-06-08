@@ -20,10 +20,7 @@ func main() {
 	t1.Right.Left=&algo.TreeNode{Val:6}
 	t1.Right.Right=&algo.TreeNode{Val:7}
 	print(t1,"\n")
-	l1:=leetcode.NewLRUCache(2)
-	l1.Put(1,1)
-	l1.Put(2,2)
-	fmt.Println("输出",l1.Get(1))
-	l1.Put(3,3)
-	fmt.Println("输出",l1.Get(2))
+	for i:=0;i<20;i++{
+		fmt.Println(i,leetcode.IsPrime(i))
+	}
 }
