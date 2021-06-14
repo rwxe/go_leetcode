@@ -1,31 +1,20 @@
 package leetcode
 
 func hasCycle(head *ListNode) bool {
-	slowPointer := head
-	fastPointer := head
-	started := false
-	if head==nil{
+
+	if head == nil || head.Next == nil {
 		return false
 	}
-	for {
-		if slowPointer.Next != nil {
-			slowPointer = slowPointer.Next
-		} else {
+	slowPointer := head
+	fastPointer := head.Next
+	for slowPointer != fastPointer {
+		if fastPointer == nil || fastPointer.Next == nil {
 			return false
 		}
-		if fastPointer.Next != nil {
-			if fastPointer.Next.Next != nil {
-				fastPointer = fastPointer.Next.Next
-			}else{
-				return false
-			}
-		} else {
-			return false
-		}
-		if slowPointer == fastPointer && started {
-			return true
-		}
-		started = true
+		slowPointer = slowPointer.Next
+		fastPointer = fastPointer.Next.Next
+
 	}
+	return true
 
 }
