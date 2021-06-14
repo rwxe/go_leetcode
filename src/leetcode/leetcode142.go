@@ -20,9 +20,26 @@ func detectCycle(head *ListNode) *ListNode {
 		p=p.Next
 		slowPointer=slowPointer.Next
 	}
-	return 
+	return p
 
 
 
+
+}
+func detectCycle1(head *ListNode) *ListNode {
+	if head==nil || head.Next==nil{
+		return nil
+	}
+	seen:=make(map[*ListNode]bool)
+	for head!=nil{
+		if _,ok:=seen[head];ok{
+			return head
+
+		}else{
+			seen[head]=true
+		}
+		head=head.Next
+	}
+	return nil
 
 }
