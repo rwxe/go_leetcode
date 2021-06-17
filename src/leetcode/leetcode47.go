@@ -1,11 +1,17 @@
 package leetcode
 
-func bt46(list, nums []int, length int, result *[][]int) {
+import "sort"
+
+func bt47(list, nums []int, length int, result *[][]int) {
+	// TODO
 	if len(list) >= length {
 		*result = append(*result, append([]int(nil), list...))
 		return
 	}
 	for i := 0; i < len(nums); i++ {
+		if i>0 && nums[i]==nums[i-1]{
+			continue
+		}
 		list = append(list, nums[i])
 		newNums := append([]int(nil), nums[:i]...)
 		newNums = append(newNums, nums[i+1:]...)
@@ -13,11 +19,12 @@ func bt46(list, nums []int, length int, result *[][]int) {
 		list = list[:len(list)-1]
 	}
 }
-
-func Permute(nums []int) [][]int {
-	result := make([][]int, 0)
-	n := len(nums)
-	bt46([]int{}, nums, n, &result)
+func PermuteUnique(nums []int) [][]int {
+	sort.Ints(nums)
+	length:=len(nums)
+	result:=make([][]int,0)
+	bt47([]int{},nums,length,&result)
 	return result
+
 
 }
