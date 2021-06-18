@@ -13,7 +13,7 @@ func bt78(nums []int, pos int, list []int, result *[][]int) {
 
 }
 
-
+// 回溯
 func Subsets0(nums []int) [][]int {
 	result := make([][]int, 0)
 	bt78(nums, 0, []int{}, &result)
@@ -21,6 +21,7 @@ func Subsets0(nums []int) [][]int {
 
 }
 
+// 位运算
 func Subsets1(nums []int) [][]int {
 	seqMax := (1 << len(nums)) - 1
 	result := make([][]int, 0)
@@ -37,13 +38,16 @@ func Subsets1(nums []int) [][]int {
 	return result
 
 }
+
+// BFS
 func Subsets2(nums []int) [][]int {
+	// 注意初始长度为1，包含空集
 	result := make([][]int, 1)
 
 	for i := 0; i < len(nums); i++ {
-		resultLen:=len(result)
+		resultLen := len(result)
 		for j := 0; j < resultLen; j++ {
-			list := append([]int(nil),result[j]...)
+			list := append([]int(nil), result[j]...)
 			list = append(list, nums[i])
 			result = append(result, list)
 		}
@@ -52,20 +56,21 @@ func Subsets2(nums []int) [][]int {
 
 }
 
+// 回溯2
 func Subsets3(nums []int) [][]int {
-	result:=make([][]int,0)
-    set := []int{}
-    var dfs func(int)
-    dfs = func(cur int) {
-        if cur == len(nums) {
-            result = append(result, append([]int(nil), set...))
-            return
-        }
-        set = append(set, nums[cur])
-        dfs(cur + 1)
-        set = set[:len(set)-1]
-        dfs(cur + 1)
-    }
-    dfs(0)
-    return result
+	result := make([][]int, 0)
+	set := []int{}
+	var dfs func(int)
+	dfs = func(cur int) {
+		if cur == len(nums) {
+			result = append(result, append([]int(nil), set...))
+			return
+		}
+		set = append(set, nums[cur])
+		dfs(cur + 1)
+		set = set[:len(set)-1]
+		dfs(cur + 1)
+	}
+	dfs(0)
+	return result
 }
