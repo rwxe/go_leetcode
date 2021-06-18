@@ -14,6 +14,7 @@ func main() {
 	//  	t1.Right.Left=&algo.TreeNode{Val:6}
 	//  	t1.Right.Right=&algo.TreeNode{Val:7}
 	//	fmt.Println(leetcode.LevelOrderJZ32(t1))
-	fmt.Println(leetcode.Generate118(5))
+	fmt.Println(leetcode.StrStr("mississippi","issip"))
+	fmt.Println(leetcode.StrStr("mississippi","pi"))
 
 }
