@@ -14,6 +14,6 @@ func main() {
 	//  	t1.Right.Left=&algo.TreeNode{Val:6}
 	//  	t1.Right.Right=&algo.TreeNode{Val:7}
 	//	fmt.Println(leetcode.LevelOrderJZ32(t1))
-	fmt.Println(leetcode.IsPalindrome125("ab_a"))
+	fmt.Println(leetcode.Generate118(5))
 
 }
