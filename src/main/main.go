@@ -15,5 +15,6 @@ func main() {
 	//  	t1.Right.Right=&algo.TreeNode{Val:7}
 	//	fmt.Println(leetcode.LevelOrderJZ32(t1))
 	fmt.Println(leetcode.Permute([]int{1,2,3}))
+	fmt.Println(leetcode.SolveNQueens(4))
 
 }

@@ -1,5 +1,7 @@
 package leetcode
 
+import "fmt"
+
 func isValid51(board [][]byte, row, col int) bool {
 	// 纵向
 	for row := row; row >= 0; row-- {
@@ -15,7 +17,7 @@ func isValid51(board [][]byte, row, col int) bool {
 
 	}
 	// 右上角斜向
-	for row, col := row-1, col+1; row >= 0 && col <= len(board[row]); row, col = row-1, col+1 {
+	for row, col := row-1, col+1; row >= 0 && col < len(board[row]); row, col = row-1, col+1 {
 		if board[row][col] == 'Q' {
 			return false
 		}
@@ -26,26 +28,32 @@ func isValid51(board [][]byte, row, col int) bool {
 
 func bt51(board [][]byte, row int, result *[][]string) {
 	if row >= len(board) {
+		fmt.Println(board)
 		return
 	}
-	for col := 0; col < len(board[col]); col++ {
+	for col := 0; col < len(board); col++ {
 		if !isValid51(board, row, col) {
 			continue
 		}
-		board[row][col] = 1
+		board[row][col] = 'Q'
 		bt51(board, row+1, result)
-		board[row][col] = 0
+		board[row][col] = '.'
 
 	}
 
 }
 
-func solveNQueens(n int) [][]string {
+func SolveNQueens(n int) [][]string {
 	board := make([][]byte, n)
 	for i := range board {
 		board[i] = make([]byte, n)
 	}
 	result := make([][]string, 0)
+	for i:=range board{
+		for j:=range board[i]{
+			board[i][j]=
+		}
+	}
 	bt51(board, 0, &result)
 
 	return result
