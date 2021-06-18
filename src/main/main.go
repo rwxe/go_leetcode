@@ -16,5 +16,6 @@ func main() {
 	//	fmt.Println(leetcode.LevelOrderJZ32(t1))
 	fmt.Println(leetcode.Permute([]int{1,2,3}))
 	fmt.Println(leetcode.SolveNQueens(4))
+	fmt.Println(leetcode.SolveNQueens(15))
 
 }

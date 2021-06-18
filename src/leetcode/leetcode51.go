@@ -1,6 +1,5 @@
 package leetcode
 
-import "fmt"
 
 func isValid51(board [][]byte, row, col int) bool {
 	// 纵向
@@ -28,7 +27,11 @@ func isValid51(board [][]byte, row, col int) bool {
 
 func bt51(board [][]byte, row int, result *[][]string) {
 	if row >= len(board) {
-		fmt.Println(board)
+		snapshot:=make([]string,0)
+		for _,row:=range board{
+			snapshot=append(snapshot,string(row))
+		}
+		*result=append(*result,snapshot)
 		return
 	}
 	for col := 0; col < len(board); col++ {
@@ -49,9 +52,9 @@ func SolveNQueens(n int) [][]string {
 		board[i] = make([]byte, n)
 	}
 	result := make([][]string, 0)
-	for i:=range board{
-		for j:=range board[i]{
-			board[i][j]='.'
+	for i := range board {
+		for j := range board[i] {
+			board[i][j] = '.'
 		}
 	}
 	bt51(board, 0, &result)
