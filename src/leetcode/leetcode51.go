@@ -51,7 +51,7 @@ func SolveNQueens(n int) [][]string {
 	result := make([][]string, 0)
 	for i:=range board{
 		for j:=range board[i]{
-			board[i][j]=
+			board[i][j]='.'
 		}
 	}
 	bt51(board, 0, &result)
