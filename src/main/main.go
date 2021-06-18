@@ -14,6 +14,7 @@ func main() {
 	//  	t1.Right.Left=&algo.TreeNode{Val:6}
 	//  	t1.Right.Right=&algo.TreeNode{Val:7}
 	//	fmt.Println(leetcode.LevelOrderJZ32(t1))
-	fmt.Println(leetcode.PermuteUnique([]int{1, 2, 3,4}))
-	fmt.Println(leetcode.PermuteUnique([]int{1, 2, 3,3}))
+	fmt.Println(leetcode.SmallestGoodBase("13"))
+	fmt.Println(leetcode.SmallestGoodBase("4681"))
+	fmt.Println(leetcode.SmallestGoodBase("1000000000000000000"))
 }
