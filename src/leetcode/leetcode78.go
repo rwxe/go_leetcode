@@ -13,10 +13,21 @@ func bt78(nums []int, pos int, list []int, result *[][]int) {
 
 }
 
+func bt78_2(nums []int,pos int ,path []int,result *[][]int){
+	*result=append(*result,append([]int(nil),path...))
+	for i:=pos;i<len(nums);i++{
+		path=append(path,nums[i])
+		bt78_2(nums,i+1,path,result)
+		path=path[:len(path)-1]
+	}
+
+}
+
 // 回溯
 func Subsets0(nums []int) [][]int {
 	result := make([][]int, 0)
-	bt78(nums, 0, []int{}, &result)
+	//bt78(nums, 0, []int{}, &result)
+	bt78_2(nums,0,[]int{},&result)
 	return result
 
 }
