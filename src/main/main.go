@@ -16,6 +16,6 @@ func main() {
 //		fmt.Println(algo.LevelOrder(t1))
 //		fmt.Println(algo.PreorderTraversalR(t1,&[]int{}))
 //		fmt.Println(algo.InorderTraversalR(t1,&[]int{}))
-		fmt.Println(leetcode.CountPoints2([][]int{{1,3},{3,3},{5,3},{2,2}},[][]int{{2,3,1},{4,3,1},{1,1,2}}))
+		fmt.Println(leetcode.ReadBinaryWatch(1))
 
 }
