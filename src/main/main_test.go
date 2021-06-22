@@ -5,15 +5,21 @@ import (
 	"testing"
 )
 
-func BenchmarkMain(b *testing.B) {
+func BenchmarkMain0(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		leetcode.CountPoints([][]int{{1, 3}, {3, 3}, {5, 3}, {2, 2}}, [][]int{{2, 3, 1}, {4, 3, 1}, {1, 1, 2}})
+		leetcode.Permute0([]int{1,2,3,4,5})
+	}
+}
+
+func BenchmarkMain1(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		leetcode.Permute1([]int{1,2,3,4,5})
 	}
 }
 
 func BenchmarkMain2(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		leetcode.CountPoints2([][]int{{1, 3}, {3, 3}, {5, 3}, {2, 2}}, [][]int{{2, 3, 1}, {4, 3, 1}, {1, 1, 2}})
+		leetcode.Permute2([]int{1,2,3,4,5})
 	}
 }
 

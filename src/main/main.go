@@ -16,7 +16,6 @@ func main() {
 //		fmt.Println(algo.LevelOrder(t1))
 //		fmt.Println(algo.PreorderTraversalR(t1,&[]int{}))
 //		fmt.Println(algo.InorderTraversalR(t1,&[]int{}))
-		fmt.Println(leetcode.FindCenter([][]int{{1,2},{2,3},{4,2}}))
-		fmt.Println(leetcode.FindCenter([][]int{{1,2},{5,1},{1,3},{1,4}}))
+		fmt.Println(leetcode.Permute1([]int{1,2,5}))
 
 }
