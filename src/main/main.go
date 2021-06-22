@@ -16,6 +16,7 @@ func main() {
 //		fmt.Println(algo.LevelOrder(t1))
 //		fmt.Println(algo.PreorderTraversalR(t1,&[]int{}))
 //		fmt.Println(algo.InorderTraversalR(t1,&[]int{}))
-		fmt.Println(leetcode.ReadBinaryWatch(1))
+		fmt.Println(leetcode.Permutation("abc"))
+		fmt.Println(leetcode.Permutation("bba"))
 
 }
