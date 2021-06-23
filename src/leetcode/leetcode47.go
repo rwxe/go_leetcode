@@ -3,7 +3,6 @@ package leetcode
 import "sort"
 
 func bt47(list, nums []int, length int, result *[][]int) {
-	// TODO
 	if len(list) >= length {
 		*result = append(*result, append([]int(nil), list...))
 		return
@@ -15,7 +14,7 @@ func bt47(list, nums []int, length int, result *[][]int) {
 		list = append(list, nums[i])
 		newNums := append([]int(nil), nums[:i]...)
 		newNums = append(newNums, nums[i+1:]...)
-		bt46(list, newNums, length, result)
+		bt47(list, newNums, length, result)
 		list = list[:len(list)-1]
 	}
 }
