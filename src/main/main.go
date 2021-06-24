@@ -17,7 +17,5 @@ func main() {
 	//		fmt.Println(algo.PreorderTraversalR(t1,&[]int{}))
 	//		fmt.Println(algo.InorderTraversalR(t1,&[]int{}))
 
-	fmt.Println(leetcode.LetterCombinations("23"))
-	fmt.Println(leetcode.LetterCombinations(""))
-	fmt.Println(leetcode.LetterCombinations("2"))
+	fmt.Println(leetcode.CombinationSum([]int{6,7,3,2},7))
 }
