@@ -17,6 +17,7 @@ func main() {
 	//		fmt.Println(algo.PreorderTraversalR(t1,&[]int{}))
 	//		fmt.Println(algo.InorderTraversalR(t1,&[]int{}))
 
-	fmt.Println(leetcode.MyPow(3.0, 13))
-	fmt.Println(leetcode.MyPow(2.0, -2))
+	fmt.Println(leetcode.LetterCombinations("23"))
+	fmt.Println(leetcode.LetterCombinations(""))
+	fmt.Println(leetcode.LetterCombinations("2"))
 }

@@ -1,6 +1,5 @@
 package leetcode
 
-import "fmt"
 
 func bitLen(n int) int {
 	count := 0
