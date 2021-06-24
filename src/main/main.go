@@ -16,7 +16,7 @@ func main() {
 //		fmt.Println(algo.LevelOrder(t1))
 //		fmt.Println(algo.PreorderTraversalR(t1,&[]int{}))
 //		fmt.Println(algo.InorderTraversalR(t1,&[]int{}))
-		fmt.Println(leetcode.PermuteUnique([]int{1,2,1,2,1,2}))
-		fmt.Println(leetcode.GenerateParenthesis(3))
+		fmt.Println(leetcode.MaxPoints([][]int{{1,1},{2,2},{3,3},{4,4}}))
+		fmt.Println(leetcode.MaxPoints([][]int{{1,1},{3,2},{5,3},{4,1},{2,3},{1,4}}))
 
 }
