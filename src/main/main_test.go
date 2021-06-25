@@ -4,22 +4,21 @@ import (
 	"go_leetcode/src/leetcode"
 	"testing"
 )
+var board = [][]byte{
+		{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+		{'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+		{'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+		{'8', '.', '.', '.', '6', '.', '.', '.', '3'},
+		{'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+		{'7', '.', '.', '.', '2', '.', '.', '.', '6'},
+		{'.', '6', '.', '.', '.', '.', '2', '8', '.'},
+		{'.', '.', '.', '4', '1', '9', '.', '.', '5'},
+		{'.', '.', '.', '.', '8', '.', '.', '7', '9'}}
 
 func BenchmarkMain0(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		leetcode.Permute0([]int{1,2,3,4,5})
+		leetcode.SolveSudoku(board)
 	}
 }
 
-func BenchmarkMain1(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		leetcode.Permute1([]int{1,2,3,4,5})
-	}
-}
-
-func BenchmarkMain2(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		leetcode.Permute2([]int{1,2,3,4,5})
-	}
-}
 

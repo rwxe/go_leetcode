@@ -16,7 +16,22 @@ func main() {
 	//		fmt.Println(algo.LevelOrder(t1))
 	//		fmt.Println(algo.PreorderTraversalR(t1,&[]int{}))
 	//		fmt.Println(algo.InorderTraversalR(t1,&[]int{}))
+	fmt.Println(leetcode.CombinationSum3(3, 7))
+	board := [][]byte{
+		{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+		{'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+		{'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+		{'8', '.', '.', '.', '6', '.', '.', '.', '3'},
+		{'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+		{'7', '.', '.', '.', '2', '.', '.', '.', '6'},
+		{'.', '6', '.', '.', '.', '.', '2', '8', '.'},
+		{'.', '.', '.', '4', '1', '9', '.', '.', '5'},
+		{'.', '.', '.', '.', '8', '.', '.', '7', '9'}}
+//	for i := 1; i < 10; i++ {
+//		fmt.Println(i,leetcode.IsVaild37(0, 2, byte(i+'0'), board))
+//
+//	}
+	leetcode.SolveSudoku(board)
+	fmt.Println(board)
 
-	fmt.Println(leetcode.CombinationSum3(3,7))
-	fmt.Println(leetcode.CombinationSum3(3,9))
 }
