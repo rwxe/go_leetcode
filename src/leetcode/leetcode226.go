@@ -1,6 +1,6 @@
 package leetcode
 
-import "go_leetcode/src/algo"
+import "src/algo"
 
 type TreeNode=algo.TreeNode
 
