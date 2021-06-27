@@ -16,9 +16,9 @@ func main() {
 	//		fmt.Println(algo.LevelOrder(t1))
 	//		fmt.Println(algo.PreorderTraversalR(t1,&[]int{}))
 	//		fmt.Println(algo.InorderTraversalR(t1,&[]int{}))
-	fmt.Println(leetcode.IsOneBitCharacter([]int{1,1,0}))
-	fmt.Println(leetcode.IsOneBitCharacter([]int{0,0}))
-	fmt.Println(leetcode.IsOneBitCharacter([]int{1,1,1,0}))
-	fmt.Println(leetcode.IsOneBitCharacter([]int{1,1,1,1,1}))
+	fmt.Println(leetcode.WonderfulSubstrings("aba"))
+	fmt.Println(leetcode.WonderfulSubstrings("aabb"))
+	fmt.Println(leetcode.WonderfulSubstrings("he"))
+	fmt.Println(leetcode.WonderfulSubstrings("bibacdfehgbchbjicccecacbdeiggideciijgbahifjjhdeddeabbfihbegbagcgbidefijigabfjhbdjfiihggdbjacgjccidedajgaabdibcdfjfjfeifefdeachbcbdadggiagbdfigjadeaadfbadhfjgifeeaagiabddicdejcgaejcdgffggdddffideijchchaffgjhfeaffhbfahieggdahdbeijfjbeaciagfjjbcjdbjgdfeefbgjfhcbajbdghgeieiahadebeiabjedjhbfbhfhajcieibaejefbfeihebbjgciceibbabddcaeehdfdhbeeeffdijfghdfeedfcccfchjhdjddfgehiccdggbdjjghicagdhceiaebfhjhbefghjjcbjbjbfbbdhhdbdbceejaffbdbidaefihcjagaibhihbebhjfggbddhedfcacagegfaiiaeheiggjhfaegffdicgebabceaahjeegafgjgfejfeheafidabjbgafjcdgffdafcgecjdjefcbhefbfghgegfegdabjiicihfdbjjiehjfbjfhgaeacjgfbggggjegffgbabafdhbbiadgfcbfcicjagceeibhagieiddjjhcjdidccgjfbgihadhhjihgdaheibigihefacfbdgfiefehgjbbcggccfcibhbhhjjagjhehciejafbhjeicaieagjagdaaaddfgiibgicgjghdjiddaeihbcbccbfjigdjcachhdcgfheaacfhfajefbccgjcdcaahjaaedcibbjgggajaceijababjafbaccfiffcbedjc"))
 
 }
