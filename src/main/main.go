@@ -16,9 +16,6 @@ func main() {
 	//		fmt.Println(algo.LevelOrder(t1))
 	//		fmt.Println(algo.PreorderTraversalR(t1,&[]int{}))
 	//		fmt.Println(algo.InorderTraversalR(t1,&[]int{}))
-	fmt.Println(leetcode.WonderfulSubstrings("aba"))
-	fmt.Println(leetcode.WonderfulSubstrings("aabb"))
-	fmt.Println(leetcode.WonderfulSubstrings("he"))
-	fmt.Println(leetcode.WonderfulSubstrings("bibacdfehgbchbjicccecacbdeiggideciijgbahifjjhdeddeabbfihbegbagcgbidefijigabfjhbdjfiihggdbjacgjccidedajgaabdibcdfjfjfeifefdeachbcbdadggiagbdfigjadeaadfbadhfjgifeeaagiabddicdejcgaejcdgffggdddffideijchchaffgjhfeaffhbfahieggdahdbeijfjbeaciagfjjbcjdbjgdfeefbgjfhcbajbdghgeieiahadebeiabjedjhbfbhfhajcieibaejefbfeihebbjgciceibbabddcaeehdfdhbeeeffdijfghdfeedfcccfchjhdjddfgehiccdggbdjjghicagdhceiaebfhjhbefghjjcbjbjbfbbdhhdbdbceejaffbdbidaefihcjagaibhihbebhjfggbddhedfcacagegfaiiaeheiggjhfaegffdicgebabceaahjeegafgjgfejfeheafidabjbgafjcdgffdafcgecjdjefcbhefbfghgegfegdabjiicihfdbjjiehjfbjfhgaeacjgfbggggjegffgbabafdhbbiadgfcbfcicjagceeibhagieiddjjhcjdidccgjfbgihadhhjihgdaheibigihefacfbdgfiefehgjbbcggccfcibhbhhjjagjhehciejafbhjeicaieagjagdaaaddfgiibgicgjghdjiddaeihbcbccbfjigdjcachhdcgfheaacfhfajefbccgjcdcaahjaaedcibbjgggajaceijababjafbaccfiffcbedjc"))
+	fmt.Println(leetcode.SubarraySum([]int{1,2,3},2))
 
 }
