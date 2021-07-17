@@ -16,6 +16,8 @@ func main() {
 	//		fmt.Println(algo.LevelOrder(t1))
 	//		fmt.Println(algo.PreorderTraversalR(t1,&[]int{}))
 	//		fmt.Println(algo.InorderTraversalR(t1,&[]int{}))
-	fmt.Println(leetcode.SubarraySum([]int{1,2,3},2))
+	nums:=[]int{9,8,7,6,5,4,3,2,1,0}
+	leetcode.QuickSort(nums,0,len(nums)-1)
+	fmt.Println(nums)
 
 }
