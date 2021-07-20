@@ -2,7 +2,6 @@ package algo
 
 import (
 	"math/rand"
-	"time"
 )
 
 //var a =[]int{9,3,41,7,98,621,1,4}
@@ -10,14 +9,14 @@ import (
 // 快排模板
 func QuickSort(nums []int, leftEnd, rightEnd int) {
 	if leftEnd < rightEnd {
-		mid := ioaPartition(nums, leftEnd, rightEnd)
+		mid := IOAPartition(nums, leftEnd, rightEnd)
 		QuickSort(nums, leftEnd, mid-1)
 		QuickSort(nums, mid+1, rightEnd)
 	}
 }
 
 // 霍尔分区，采用最左边的元素作为基准
-func hoarePartition(nums []int, leftEnd, rightEnd int) int {
+func HoarePartition(nums []int, leftEnd, rightEnd int) int {
 	pivot := nums[leftEnd]
 	l := leftEnd
 	r := rightEnd
@@ -35,7 +34,7 @@ func hoarePartition(nums []int, leftEnd, rightEnd int) int {
 }
 
 // 算法导论分区，以最右为基准
-func ioaPartition(nums []int, leftEnd, rightEnd int) int {
+func IOAPartition(nums []int, leftEnd, rightEnd int) int {
 	// leetcode 超时警告
 	pivot := nums[rightEnd]
 	l := leftEnd - 1
@@ -52,7 +51,8 @@ func ioaPartition(nums []int, leftEnd, rightEnd int) int {
 
 // 算法导论分区优化1，以最右为基准
 // 随机选取基准
-func ioaPartition1(nums []int, leftEnd, rightEnd int) int {
+func IOAPartition1(nums []int, leftEnd, rightEnd int) int {
+	// rand.Seed(time.Now().Unix())
 	random := leftEnd + rand.Intn(rightEnd-leftEnd+1)
 	nums[rightEnd], nums[random] = nums[random], nums[rightEnd]
 	pivot := nums[rightEnd]
@@ -70,7 +70,7 @@ func ioaPartition1(nums []int, leftEnd, rightEnd int) int {
 
 // 算法导论分区优化2，以最右为基准
 // 选择三个求中位数
-func ioaPartition2(nums []int, leftEnd, rightEnd int) int {
+func IOAPartition2(nums []int, leftEnd, rightEnd int) int {
 	median := rightEnd
 	if len(nums) > 2 {
 		half := (leftEnd + rightEnd) / 2
