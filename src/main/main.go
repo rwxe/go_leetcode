@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"src/leetcode"
+	"src/algo"
 )
 
 func main() {
@@ -17,7 +18,8 @@ func main() {
 	//		fmt.Println(algo.PreorderTraversalR(t1,&[]int{}))
 	//		fmt.Println(algo.InorderTraversalR(t1,&[]int{}))
 	nums:=[]int{9,8,7,6,5,4,3,2,1,0}
-	leetcode.QuickSort(nums,0,len(nums)-1)
+	leetcode.CountBits(12)
+	algo.BubbleSort(nums)
 	fmt.Println(nums)
 
 }

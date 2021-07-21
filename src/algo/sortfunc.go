@@ -7,11 +7,31 @@ import (
 //var a =[]int{9,3,41,7,98,621,1,4}
 
 // 快排模板
-func QuickSort(nums []int, leftEnd, rightEnd int) {
+func QuickSortR(nums []int, leftEnd, rightEnd int) {
 	if leftEnd < rightEnd {
 		mid := IOAPartition(nums, leftEnd, rightEnd)
-		QuickSort(nums, leftEnd, mid-1)
-		QuickSort(nums, mid+1, rightEnd)
+		QuickSortR(nums, leftEnd, mid-1)
+		QuickSortR(nums, mid+1, rightEnd)
+	}
+}
+
+// 快排模板,非递归
+func QuickSortNR(nums []int, leftEnd, rightEnd int) {
+	stack := make([][]int, 0)
+	stack = append(stack, []int{leftEnd, rightEnd})
+	for len(stack) != 0 {
+		frame := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		l := frame[0]
+		r := frame[1]
+		mid := IOAPartition2(nums, l, r)
+		if mid > l {
+			stack = append(stack, []int{l, mid - 1})
+		}
+		if mid < r {
+			stack = append(stack, []int{mid + 1, r})
+		}
+
 	}
 }
 
@@ -136,31 +156,13 @@ func MergeSort(arr []int) []int {
 	return result
 }
 
-func QuickSort0(arr []int, leftEnd, rightEnd int) {
-	if leftEnd > rightEnd {
-		return
-	}
-	left := leftEnd
-	right := rightEnd
-	pivot := arr[left]
-	for left < right {
-		for left < right && arr[right] >= pivot {
-			right -= 1
-		}
-		if left < right {
-			arr[left] = arr[right]
-		}
-		for left < right && arr[left] <= pivot {
-			left += 1
-		}
-		if left < right {
-			arr[right] = arr[left]
-		}
-		if left >= right {
-			arr[left] = pivot
+func BubbleSort(nums []int){
+	for i:=0;i<len(nums)-1;i++{
+		for j:=0;j<len(nums)-1-i;j++{
+			if nums[j]>nums[j+1]{
+				nums[j],nums[j+1]=nums[j+1],nums[j]
+			}
 		}
 	}
-	QuickSort0(arr, leftEnd, right-1)
-	QuickSort0(arr, left+1, rightEnd)
-}
 
+}
