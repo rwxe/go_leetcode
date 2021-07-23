@@ -128,21 +128,20 @@ func IOAPartition2(nums []int, leftEnd, rightEnd int) int {
 	return l + 1
 }
 
-func merge(left, right []int) []int {
-	l := 0
-	r := 0
+func merge(leftNums, rightNums []int) []int {
+	l, r := 0, 0
 	result := make([]int, 0)
-	for l < len(left) && r < len(right) {
-		if left[l] < right[r] {
-			result = append(result, left[l])
+	for l < len(leftNums) && r < len(rightNums) {
+		if leftNums[l] < rightNums[r] {
+			result = append(result, leftNums[l])
 			l++
 		} else {
-			result = append(result, right[r])
+			result = append(result, rightNums[r])
 			r++
 		}
 	}
-	result = append(result, left[l:]...)
-	result = append(result, right[r:]...)
+	result = append(result, leftNums[l:]...)
+	result = append(result, rightNums[r:]...)
 	return result
 }
 func MergeSort(arr []int) []int {
@@ -150,17 +149,16 @@ func MergeSort(arr []int) []int {
 		return arr
 	}
 	mid := len(arr) / 2
-	left := MergeSort(arr[:mid])
-	right := MergeSort(arr[mid:])
-	result := merge(left, right)
-	return result
+	leftNums := MergeSort(arr[:mid])
+	rightNums := MergeSort(arr[mid:])
+	return merge(leftNums, rightNums)
 }
 
-func BubbleSort(nums []int){
-	for i:=0;i<len(nums)-1;i++{
-		for j:=0;j<len(nums)-1-i;j++{
-			if nums[j]>nums[j+1]{
-				nums[j],nums[j+1]=nums[j+1],nums[j]
+func BubbleSort(nums []int) {
+	for i := 0; i < len(nums)-1; i++ {
+		for j := 0; j < len(nums)-1-i; j++ {
+			if nums[j] > nums[j+1] {
+				nums[j], nums[j+1] = nums[j+1], nums[j]
 			}
 		}
 	}
