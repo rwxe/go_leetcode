@@ -40,17 +40,18 @@ func (l *LRUDoubleList) remove(node *LRUDoubleListNode) {
 func (l *LRUDoubleList) removeFromTail() *LRUDoubleListNode {
 	if l.head.next == l.tail {
 		return nil
+	} else {
+		node := l.tail.prev
+		l.remove(node)
+		return node
 	}
-	node := l.tail.prev
-	l.remove(node)
-	return node
 }
 
 // 缓存结构
 type LRUCache struct {
-	capacity  int
-	keymap    map[int]*LRUDoubleListNode
-	cache LRUDoubleList
+	capacity int
+	keymap   map[int]*LRUDoubleListNode
+	cache    LRUDoubleList
 }
 
 // 构造一个缓存
