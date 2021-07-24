@@ -20,6 +20,9 @@ func main() {
 	nums:=[]int{9,8,7,6,5,4,3,2,1,0}
 	leetcode.CountBits(12)
 	algo.BubbleSort(nums)
-	fmt.Println(nums)
+	//fmt.Println(leetcode.RestoreIpAddresses("0000"))
+	fmt.Println(leetcode.RestoreIpAddresses("127001"))
+  	//fmt.Println(leetcode.RestoreIpAddresses("25525511135"))
+
 
 }
