@@ -1,16 +1,16 @@
 package leetcode
 
-func bt46(list, nums []int, length int, result *[][]int) {
-	if len(list) >= length {
-		*result = append(*result, append([]int(nil), list...))
+func bt46(path, nums []int, length int, result *[][]int) {
+	if len(path) >= length {
+		*result = append(*result, append([]int(nil), path...))
 		return
 	}
 	for i := 0; i < len(nums); i++ {
-		list = append(list, nums[i])
+		path = append(path, nums[i])
 		newNums := append([]int(nil), nums[:i]...)
 		newNums = append(newNums, nums[i+1:]...)
-		bt46(list, newNums, length, result)
-		list = list[:len(list)-1]
+		bt46(path, newNums, length, result)
+		path = path[:len(path)-1]
 	}
 }
 

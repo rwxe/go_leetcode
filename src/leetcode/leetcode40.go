@@ -1,6 +1,7 @@
 package leetcode
 
 import "sort"
+
 func sum40(elems ...int) int {
 	sum := 0
 	for _, v := range elems {
@@ -19,11 +20,28 @@ func bt40(nums, path []int, pos, target int, result *[][]int) {
 		return
 	}
 	for i := pos; i < len(nums); i++ {
-		if i>pos && nums[i]==nums[i-1]{
+		if i > pos && nums[i] == nums[i-1] {
 			continue
 		}
 		path = append(path, nums[i])
 		bt40(nums, path, i+1, target, result)
+		path = path[:len(path)-1]
+	}
+
+}
+func bt40_2(nums, path []int, pos, target int, result *[][]int) {
+	if target < 0 {
+		return
+	} else if target == 0 {
+		*result = append(*result, append([]int(nil), path...))
+		return
+	}
+	for i := pos; i < len(nums); i++ {
+		if i > pos && nums[i] == nums[i-1] {
+			continue
+		}
+		path = append(path, nums[i])
+		bt40(nums, path, i+1, target-nums[i], result)
 		path = path[:len(path)-1]
 	}
 
