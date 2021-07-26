@@ -6,14 +6,12 @@ func IsVaild37(i, j int, num byte, board [][]byte) bool {
 	// 检测同行
 	for col := 0; col < len(board[i]); col++ {
 		if board[i][col] == num {
-			//			fmt.Printf("同行:%q,%q", board[i][col], num)
 			return false
 		}
 	}
 	// 检测同列
 	for row := 0; row < len(board); row++ {
 		if board[row][j] == num {
-			//			fmt.Printf("同列:%q,%q", board[row][j], num)
 			return false
 		}
 	}
@@ -23,7 +21,6 @@ func IsVaild37(i, j int, num byte, board [][]byte) bool {
 	for row := palaceI * 3; row < palaceI*3+3; row++ {
 		for col := palaceJ * 3; col < palaceJ*3+3; col++ {
 			if board[row][col] == num {
-				//				fmt.Printf("同宫:%q,%q", board[row][col], num)
 				return false
 			}
 		}

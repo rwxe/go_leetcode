@@ -21,7 +21,7 @@ func main() {
 	leetcode.CountBits(12)
 	algo.BubbleSort(nums)
 	//fmt.Println(leetcode.RestoreIpAddresses("0000"))
-	fmt.Println(leetcode.Combine(3,2))
+	fmt.Println(leetcode.RestoreIpAddresses("127001"))
   	//fmt.Println(leetcode.RestoreIpAddresses("25525511135"))
 
 

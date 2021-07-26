@@ -1,6 +1,5 @@
 package leetcode
 
-
 func isValid51(board [][]byte, row, col int) bool {
 	// 纵向
 	for row := row; row >= 0; row-- {
@@ -25,23 +24,22 @@ func isValid51(board [][]byte, row, col int) bool {
 	return true
 }
 
+
 func bt51(board [][]byte, row int, result *[][]string) {
 	if row >= len(board) {
-		snapshot:=make([]string,0)
-		for _,row:=range board{
-			snapshot=append(snapshot,string(row))
+		snapshot := make([]string, 0)
+		for _, row := range board {
+			snapshot = append(snapshot, string(row))
 		}
-		*result=append(*result,snapshot)
+		*result = append(*result, snapshot)
 		return
 	}
 	for col := 0; col < len(board); col++ {
-		if !isValid51(board, row, col) {
-			continue
+		if isValid51(board, row, col) {
+			board[row][col] = 'Q'
+			bt51(board, row+1, result)
+			board[row][col] = '.'
 		}
-		board[row][col] = 'Q'
-		bt51(board, row+1, result)
-		board[row][col] = '.'
-
 	}
 
 }
