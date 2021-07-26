@@ -5,6 +5,9 @@ import (
 	"src/leetcode"
 	"src/algo"
 )
+func map1(m map[int]bool){
+	m[2]=true
+}
 
 func main() {
 	//	  	t1:=&algo.TreeNode{Val:1}
@@ -21,7 +24,8 @@ func main() {
 	leetcode.CountBits(12)
 	algo.BubbleSort(nums)
 	//fmt.Println(leetcode.RestoreIpAddresses("0000"))
-	fmt.Println(leetcode.RestoreIpAddresses("127001"))
+	fmt.Println(leetcode.SolveNQueens(8))
+	fmt.Println(leetcode.SolveNQueens_2(8))
   	//fmt.Println(leetcode.RestoreIpAddresses("25525511135"))
 
 

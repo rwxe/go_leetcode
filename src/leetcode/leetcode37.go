@@ -42,7 +42,6 @@ func nextPosition(i, j int, board [][]byte) (int, int) {
 }
 
 func bt37(i, j int, board [][]byte) {
-
 	i, j = nextPosition(i, j, board)
 	if i == -1 && j == -1 {
 		//fmt.Println(board)
@@ -55,8 +54,8 @@ func bt37(i, j int, board [][]byte) {
 			board[i][j] = '.'
 		}
 	}
-
 }
+
 
 func SolveSudoku(board [][]byte) {
 	defer func() { recover() }()
@@ -64,3 +63,7 @@ func SolveSudoku(board [][]byte) {
 
 }
 
+func SolveSudoku_2(board [][]byte) {
+	//TODO
+
+}
