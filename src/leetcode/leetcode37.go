@@ -55,8 +55,28 @@ func bt37(i, j int, board [][]byte) {
 		}
 	}
 }
+func bt37_2(pos int, board [][]byte, space [][]int, row, columns [9][9]bool, block [3][3][9]bool) {
+	if pos == len(space) {
+		panic("完成了")
+	}
+	i, j := space[pos][0], space[pos][1]
+	for num := 0; num < 9; num++ {
+		if row[i][num] || columns[j][num] || block[i/3][j/3][num] {
+			continue
+		} else {
+			row[i][num] = true
+			columns[j][num] = true
+			block[i/3][j/3][num] = true
+			board[i][j] = byte(num + '1')
+			bt37_2(pos+1, board, space, row, columns, block)
+			board[i][j] = '.'
+			block[i/3][j/3][num] = false
+			columns[j][num] = false
+			row[i][num] = false
+		}
+	}
 
-
+}
 func SolveSudoku(board [][]byte) {
 	defer func() { recover() }()
 	bt37(0, 0, board)
@@ -64,6 +84,23 @@ func SolveSudoku(board [][]byte) {
 }
 
 func SolveSudoku_2(board [][]byte) {
-	//TODO
+	defer func() { recover() }()
+	row := [9][9]bool{}
+	columns := [9][9]bool{}
+	block := [3][3][9]bool{}
+	space := make([][]int, 0)
+	for i := range board {
+		for j := range board[i] {
+			if board[i][j] == '.' {
+				space = append(space, []int{i, j})
+			} else {
+				num := board[i][j] - '1'
+				row[i][num] = true
+				columns[j][num] = true
+				block[i/3][j/3][num] = true
+			}
+		}
+	}
+	bt37_2(0,board,space,row,columns,block)
 
 }
