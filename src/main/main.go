@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"src/leetcode"
-	"src/algo"
 )
 func map1(m map[int]bool){
 	m[2]=true
@@ -20,12 +19,7 @@ func main() {
 	//		fmt.Println(algo.LevelOrder(t1))
 	//		fmt.Println(algo.PreorderTraversalR(t1,&[]int{}))
 	//		fmt.Println(algo.InorderTraversalR(t1,&[]int{}))
-	nums:=[]int{9,8,7,6,5,4,3,2,1,0}
-	leetcode.CountBits(12)
-	algo.BubbleSort(nums)
-	//fmt.Println(leetcode.RestoreIpAddresses("0000"))
-	fmt.Println(leetcode.SolveNQueens(8))
-	fmt.Println(leetcode.SolveNQueens_2(8))
+	fmt.Println(leetcode.IsThree(2))
   	//fmt.Println(leetcode.RestoreIpAddresses("25525511135"))
 
 
