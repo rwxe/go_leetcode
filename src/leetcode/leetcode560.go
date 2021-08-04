@@ -22,3 +22,21 @@ func SubarraySum(nums []int, k int) int {
 	return count
 
 }
+func SubarraySum_1(nums []int, k int) int {
+	count := 0
+	prefixSum := make(map[int]int)
+	prefixSum[0]=1
+	prefixSumI := 0
+	for i := 0; i < len(nums); i++ {
+		prefixSumI += nums[i]
+		prefixSumJ := prefixSumI - k
+		fmt.Println(prefixSumI,prefixSumJ)
+		if times, ok := prefixSum[prefixSumJ]; ok {
+			count += times
+		}
+		prefixSum[prefixSumI]++
+	}
+
+	return count
+
+}

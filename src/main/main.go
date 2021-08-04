@@ -19,7 +19,7 @@ func main() {
 	//		fmt.Println(algo.LevelOrder(t1))
 	//		fmt.Println(algo.PreorderTraversalR(t1,&[]int{}))
 	//		fmt.Println(algo.InorderTraversalR(t1,&[]int{}))
-	fmt.Println(leetcode.IsThree(2))
+	fmt.Println(leetcode.SubarraySum_1([]int{1,1,1},2))
   	//fmt.Println(leetcode.RestoreIpAddresses("25525511135"))
 
 
