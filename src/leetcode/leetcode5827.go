@@ -16,22 +16,18 @@ func checkLine(board [][]byte, rMove int, cMove int, color byte, dr, dc int) boo
 			if board[r][c] == color {
 				return true
 			}
-
 		}
-
 	}
 	return false
-
 }
 
 func CheckMove(board [][]byte, rMove int, cMove int, color byte) bool {
 	drs := []int{-1, 1, 0, 0, -1, 1, -1, 1}
 	dcs := []int{0, 0, -1, 1, -1, -1, 1, 1}
-	for i:=range drs{
-		if checkLine(board,rMove,cMove,color,drs[i],dcs[i]){
+	for i := range drs {
+		if checkLine(board, rMove, cMove, color, drs[i], dcs[i]) {
 			return true
 		}
 	}
 	return false
-
 }
