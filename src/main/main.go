@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"src/leetcode"
 )
-func map1(m map[int]bool){
-	m[2]=true
+
+func map1(m map[int]bool) {
+	m[2] = true
 }
 
 func main() {
@@ -19,8 +20,18 @@ func main() {
 	//		fmt.Println(algo.LevelOrder(t1))
 	//		fmt.Println(algo.PreorderTraversalR(t1,&[]int{}))
 	//		fmt.Println(algo.InorderTraversalR(t1,&[]int{}))
-	fmt.Println(leetcode.SubarraySum_1([]int{1,1,1},2))
-  	//fmt.Println(leetcode.RestoreIpAddresses("25525511135"))
+	board := [][]byte{
+		{'.', '.', 'W', '.', 'B', 'W', 'W', 'B'},
+		{'B', 'W', '.', 'W', '.', 'W', 'B', 'B'},
+		{'.', 'W', 'B', 'W', 'W', '.', 'W', 'W'},
+		{'W', 'W', '.', 'W', '.', '.', 'B', 'B'},
+		{'B', 'W', 'B', 'B', 'W', 'W', 'B', '.'},
+		{'W', '.', 'W', '.', '.', 'B', 'W', 'W'},
+		{'B', '.', 'B', 'B', '.', '.', 'B', 'B'},
+		{'.', 'W', '.', 'W', '.', 'W', '.', 'W'}}
+	rMove, cMove := 5, 4
+	color := byte('W')
 
+	fmt.Println(leetcode.CheckMove(board, rMove, cMove, color))
 
 }

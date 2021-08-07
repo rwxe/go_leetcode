@@ -25,16 +25,15 @@ func SubarraySum(nums []int, k int) int {
 func SubarraySum_1(nums []int, k int) int {
 	count := 0
 	prefixSum := make(map[int]int)
-	prefixSum[0]=1
-	prefixSumI := 0
+	prefixSum[0] = 1
+	perfixI := 0
 	for i := 0; i < len(nums); i++ {
-		prefixSumI += nums[i]
-		prefixSumJ := prefixSumI - k
-		fmt.Println(prefixSumI,prefixSumJ)
-		if times, ok := prefixSum[prefixSumJ]; ok {
+		perfixI += nums[i]
+		prefixJ := perfixI - k
+		if times, ok := prefixSum[prefixJ]; ok {
 			count += times
 		}
-		prefixSum[prefixSumI]++
+		prefixSum[perfixI]++
 	}
 
 	return count
