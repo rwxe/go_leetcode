@@ -20,18 +20,9 @@ func main() {
 	//		fmt.Println(algo.LevelOrder(t1))
 	//		fmt.Println(algo.PreorderTraversalR(t1,&[]int{}))
 	//		fmt.Println(algo.InorderTraversalR(t1,&[]int{}))
-	board := [][]byte{
-		{'.', '.', 'W', '.', 'B', 'W', 'W', 'B'},
-		{'B', 'W', '.', 'W', '.', 'W', 'B', 'B'},
-		{'.', 'W', 'B', 'W', 'W', '.', 'W', 'W'},
-		{'W', 'W', '.', 'W', '.', '.', 'B', 'B'},
-		{'B', 'W', 'B', 'B', 'W', 'W', 'B', '.'},
-		{'W', '.', 'W', '.', '.', 'B', 'W', 'W'},
-		{'B', '.', 'B', 'B', '.', '.', 'B', 'B'},
-		{'.', 'W', '.', 'W', '.', 'W', '.', 'W'}}
-	rMove, cMove := 5, 4
-	color := byte('W')
-
-	fmt.Println(leetcode.CheckMove(board, rMove, cMove, color))
+	// fmt.Println(leetcode.MinStoneSum([]int{4,3,6,7},3))
+	// fmt.Println(leetcode.MinStoneSum([]int{4,3,6,7},5))
+	// fmt.Println(leetcode.MinStoneSum([]int{1391,5916},3))
+	fmt.Println(leetcode.MinStoneSum([]int{2695,9184,2908,3869,3779,391,2896,5328},10))
 
 }
