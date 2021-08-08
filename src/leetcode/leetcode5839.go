@@ -4,6 +4,7 @@ import (
 	"container/heap"
 	"sort"
 )
+
 func MinStoneSum(piles []int, k int) (ans int) {
 	h := &hp{piles}
 	heap.Init(h)
@@ -18,6 +19,7 @@ func MinStoneSum(piles []int, k int) (ans int) {
 }
 
 type hp struct{ sort.IntSlice }
+
 func (h hp) Less(i, j int) bool { return h.IntSlice[i] > h.IntSlice[j] }
 func (hp) Push(interface{})     {}
 func (hp) Pop() (x interface{}) { return }
