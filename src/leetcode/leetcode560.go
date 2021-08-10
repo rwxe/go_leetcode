@@ -2,7 +2,7 @@ package leetcode
 
 import "fmt"
 
-func SubarraySum(nums []int, k int) int {
+func SubarraySum_2(nums []int, k int) int {
 	count := 0
 	prefixSum := make([]int, len(nums)+1)
 	for i := 0; i < len(prefixSum)-1; i++ {
@@ -22,20 +22,18 @@ func SubarraySum(nums []int, k int) int {
 	return count
 
 }
-func SubarraySum_1(nums []int, k int) int {
-	count := 0
-	prefixSum := make(map[int]int)
-	prefixSum[0] = 1
-	perfixI := 0
-	for i := 0; i < len(nums); i++ {
-		perfixI += nums[i]
-		prefixJ := perfixI - k
-		if times, ok := prefixSum[prefixJ]; ok {
-			count += times
-		}
-		prefixSum[perfixI]++
-	}
-
-	return count
-
+func SubarraySum(nums []int, k int) int {
+    count:=0
+    preSumMap:=make(map[int]int)
+    preSumMap[0]=1
+    currentPreSum:=0
+    for i:=0;i<len(nums);i++{
+        currentPreSum+=nums[i]
+        target:=currentPreSum-k
+        if times,ok:=preSumMap[target];ok{
+            count+=times
+        }
+        preSumMap[currentPreSum]++
+    }
+    return count
 }

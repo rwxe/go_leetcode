@@ -23,6 +23,6 @@ func main() {
 	// fmt.Println(leetcode.MinStoneSum([]int{4,3,6,7},3))
 	// fmt.Println(leetcode.MinStoneSum([]int{4,3,6,7},5))
 	// fmt.Println(leetcode.MinStoneSum([]int{1391,5916},3))
-	fmt.Println(leetcode.MinStoneSum([]int{2695,9184,2908,3869,3779,391,2896,5328},10))
+	fmt.Println(leetcode.FindMaxLength([]int{0,0,0,1,0,1,1,0,0}))
 
 }
