@@ -23,6 +23,7 @@ func main() {
 	// fmt.Println(leetcode.MinStoneSum([]int{4,3,6,7},3))
 	// fmt.Println(leetcode.MinStoneSum([]int{4,3,6,7},5))
 	// fmt.Println(leetcode.MinStoneSum([]int{1391,5916},3))
-	fmt.Println(leetcode.ReverseVowels_1("leetcode"))
+	fmt.Println(leetcode.FindSubsequences([]int{1,2,3,3}))
+	fmt.Println(leetcode.Subsets2([]int{1,2,3,3}))
 
 }

@@ -47,9 +47,9 @@ func ReverseVowels_1(s string) string {
 		return ok
 	}
 	for i < j {
-		for ;i<len(byteArr) && !in(byteArr[i]); i++ {
+		for ; i < len(byteArr) && !in(byteArr[i]); i++ {
 		}
-		for ;j>=0 && !in(byteArr[j]); j-- {
+		for ; j >= 0 && !in(byteArr[j]); j-- {
 		}
 		if i < j {
 			byteArr[i], byteArr[j] = byteArr[j], byteArr[i]
