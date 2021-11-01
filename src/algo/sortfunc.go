@@ -59,7 +59,7 @@ func IOAPartition(nums []int, leftEnd, rightEnd int) int {
 	pivot := nums[rightEnd]
 	l := leftEnd - 1
 	r := leftEnd
-	for ; r <= rightEnd-1; r++ {
+	for ; r < rightEnd; r++ {
 		if nums[r] <= pivot {
 			l++
 			nums[l], nums[r] = nums[r], nums[l]
@@ -78,7 +78,7 @@ func IOAPartition1(nums []int, leftEnd, rightEnd int) int {
 	pivot := nums[rightEnd]
 	l := leftEnd - 1
 	r := leftEnd
-	for ; r <= rightEnd-1; r++ {
+	for ; r < rightEnd; r++ {
 		if nums[r] <= pivot {
 			l++
 			nums[l], nums[r] = nums[r], nums[l]
@@ -118,7 +118,7 @@ func IOAPartition2(nums []int, leftEnd, rightEnd int) int {
 	pivot := nums[rightEnd]
 	l := leftEnd - 1
 	r := leftEnd
-	for ; r <= rightEnd-1; r++ {
+	for ; r < rightEnd; r++ {
 		if nums[r] <= pivot {
 			l++
 			nums[l], nums[r] = nums[r], nums[l]
