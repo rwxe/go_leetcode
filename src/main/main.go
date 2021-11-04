@@ -25,5 +25,5 @@ func main() {
 	// fmt.Println(leetcode.MinStoneSum([]int{1391,5916},3))
 	//fmt.Println(leetcode.MinimumTimeRequired([]int{3,2,3},3))
 	//fmt.Println(leetcode.MinimumTimeRequired([]int{1,2,4,7,8},2))
-	fmt.Println(leetcode.MinimumTimeRequired([]int{2,9,17,6},2))
+	fmt.Println(leetcode.MinimumTimeRequired([]int{2, 9, 17, 6}, 2))
 }
