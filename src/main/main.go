@@ -5,10 +5,6 @@ import (
 	"src/leetcode"
 )
 
-func map1(m map[int]bool) {
-	m[2] = true
-}
-
 func main() {
 	//	  	t1:=&algo.TreeNode{Val:1}
 	//	  	t1.Left=&algo.TreeNode{Val:2}
@@ -25,5 +21,8 @@ func main() {
 	// fmt.Println(leetcode.MinStoneSum([]int{1391,5916},3))
 	//fmt.Println(leetcode.MinimumTimeRequired([]int{3,2,3},3))
 	//fmt.Println(leetcode.MinimumTimeRequired([]int{1,2,4,7,8},2))
-	fmt.Println(leetcode.MinimumTimeRequired([]int{2, 9, 17, 6}, 2))
+	nums1 := []int{1,2,3, 0,0, 0}
+	nums2 := []int{2,5,6}
+	leetcode.Merge88(nums1,3,nums2,3)
+	fmt.Println(nums1)
 }
