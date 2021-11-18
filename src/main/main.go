@@ -21,8 +21,5 @@ func main() {
 	// fmt.Println(leetcode.MinStoneSum([]int{1391,5916},3))
 	//fmt.Println(leetcode.MinimumTimeRequired([]int{3,2,3},3))
 	//fmt.Println(leetcode.MinimumTimeRequired([]int{1,2,4,7,8},2))
-	nums1 := []int{1,2,3, 0,0, 0}
-	nums2 := []int{2,5,6}
-	leetcode.Merge88(nums1,3,nums2,3)
-	fmt.Println(nums1)
+	fmt.Println(leetcode.SearcherNR([]int{3,4,5,1,2},-1<<31))
 }

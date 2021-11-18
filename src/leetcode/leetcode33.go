@@ -1,14 +1,17 @@
 package leetcode
 
+import "fmt"
+
 func search(nums []int, target int) int {
 	return searcherR(nums, target, 0, len(nums)-1)
 	//return searcherNR(nums, target)
 }
 
-func searcherNR(nums []int, target int) int {
+func SearcherNR(nums []int, target int) int {
 	left, right := 0, len(nums)-1
 	for left <= right {
 		mid := (left + right) / 2
+		fmt.Println(left,mid,right)
 		if nums[mid] == target {
 			return mid
 		} else if nums[left] <= nums[mid] {
