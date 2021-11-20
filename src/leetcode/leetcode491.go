@@ -1,6 +1,6 @@
 package leetcode
 
-func bt(nums, path []int, pos int, result *[][]int) {
+func bt491(nums, path []int, pos int, result *[][]int) {
 	if len(path) > 1 {
 		*result = append(*result, append([]int(nil), path...))
 	}
@@ -11,14 +11,14 @@ func bt(nums, path []int, pos int, result *[][]int) {
 		}
 		path = append(path, nums[i])
 		used[nums[i]] = true
-		bt(nums, path, i+1, result)
+		bt491(nums, path, i+1, result)
 		path = path[:len(path)-1]
 	}
 }
 
 func FindSubsequences(nums []int) [][]int {
 	result := make([][]int, 0)
-	bt(nums, []int{}, 0, &result)
+	bt491(nums, []int{}, 0, &result)
 	return result
 
 }
