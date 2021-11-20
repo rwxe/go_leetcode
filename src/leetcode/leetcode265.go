@@ -2,7 +2,10 @@ package leetcode
 
 import "src/algo"
 
-func minCost(costs [][]int) int {
+func minCostII(costs [][]int) int {
+	//这题和256是一样的
+	//Just Same as leetcode 256
+
 	//回溯
 	//result:=1<<31
 	//bt(costs,0,0,-1,&result)
@@ -19,10 +22,11 @@ func minCost(costs [][]int) int {
 	//return dfs(costs,-1, -1, memory)
 
 	// 动态规划
-	return dp256(costs)
+
+	return dp265(costs)
 }
 
-func dp256(costs [][]int) int {
+func dp265(costs [][]int) int {
 	tempCosts := make([]int, 0, len(costs[0]))
 	for i := len(costs) - 2; i >= 0; i-- {
 		for j := 0; j < len(costs[i]); j++ {
@@ -40,7 +44,7 @@ func dp256(costs [][]int) int {
 	return algo.MinInts(costs[0]...)
 }
 
-func dfs256(costs [][]int, houseIndex, colorIndex int, memory [][]int) int {
+func dfs265(costs [][]int, houseIndex, colorIndex int, memory [][]int) int {
 	if houseIndex == len(costs) {
 		return 0
 	}
@@ -57,7 +61,7 @@ func dfs256(costs [][]int, houseIndex, colorIndex int, memory [][]int) int {
 		if i == colorIndex {
 			continue
 		}
-		tempCosts = append(tempCosts, dfs256(costs, houseIndex+1, i, memory))
+		tempCosts = append(tempCosts, dfs265(costs, houseIndex+1, i, memory))
 	}
 	currentCost += algo.MinInts(tempCosts...)
 	if houseIndex >= 0 {
@@ -67,7 +71,7 @@ func dfs256(costs [][]int, houseIndex, colorIndex int, memory [][]int) int {
 	return currentCost
 }
 
-func bt256(costs [][]int, houseIndex int, currentCost, preColor int, result *int) {
+func bt265(costs [][]int, houseIndex int, currentCost, preColor int, result *int) {
 	if houseIndex == len(costs) {
 		if *result > currentCost {
 			*result = currentCost
@@ -81,7 +85,7 @@ func bt256(costs [][]int, houseIndex int, currentCost, preColor int, result *int
 			continue
 		}
 		currentCost += costs[houseIndex][i]
-		bt256(costs, houseIndex+1, currentCost, i, result)
+		bt265(costs, houseIndex+1, currentCost, i, result)
 		currentCost -= costs[houseIndex][i]
 	}
 }
