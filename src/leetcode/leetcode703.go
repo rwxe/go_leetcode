@@ -21,7 +21,7 @@ func (kl *KthLargest) Pop() interface{} {
 	return x
 }
 
-func Constructor(k int, nums []int) KthLargest {
+func Constructor703(k int, nums []int) KthLargest {
 	kl := KthLargest{k: k}
 	for _, v := range nums {
 		kl.Add(v)
@@ -39,6 +39,6 @@ func (kl *KthLargest) Add(val int) int {
 
 /**
  * Your KthLargest object will be instantiated and called as such:
- * obj := Constructor(k, nums);
+ * obj := Constructor703(k, nums);
  * param_1 := obj.Add(val);
  */

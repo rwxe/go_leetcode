@@ -21,6 +21,9 @@ func main() {
 	// fmt.Println(leetcode.MinStoneSum([]int{1391,5916},3))
 	//fmt.Println(leetcode.MinimumTimeRequired([]int{3,2,3},3))
 	//fmt.Println(leetcode.MinimumTimeRequired([]int{1,2,4,7,8},2))
-	fmt.Println(leetcode.FindMin154([]int{3, 1, 2}))
-	fmt.Println(leetcode.FindMin154([]int{1, 1, 0}))
+	//fmt.Println(leetcode.MaxDistance([]int{1, 8, 3, 8, 3}))
+	//fmt.Println(leetcode.MaxDistance([]int{0, 1}))
+	fmt.Println(leetcode.OriginalDigits("owoztneoer"))
+	fmt.Println(leetcode.OriginalDigits("fviefuro"))
+
 }
