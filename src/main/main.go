@@ -23,7 +23,7 @@ func main() {
 	//fmt.Println(leetcode.MinimumTimeRequired([]int{1,2,4,7,8},2))
 	//fmt.Println(leetcode.MaxDistance([]int{1, 8, 3, 8, 3}))
 	//fmt.Println(leetcode.MaxDistance([]int{0, 1}))
-	fmt.Println(leetcode.OriginalDigits("owoztneoer"))
-	fmt.Println(leetcode.OriginalDigits("fviefuro"))
+
+	fmt.Println(leetcode.PoorPigs(1000, 15, 60))
 
 }

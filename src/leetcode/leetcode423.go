@@ -1,7 +1,6 @@
 package leetcode
 
 import (
-	"fmt"
 	"sort"
 )
 
@@ -46,7 +45,6 @@ func OriginalDigits(s string) string {
 			result = append(result, byte(i+'0'))
 		}
 	}
-	fmt.Println(result)
 	sort.Slice(result, func(i, j int) bool { return result[i] < result[j] })
 	return string(result)
 
