@@ -23,10 +23,6 @@ func main() {
 	//fmt.Println(leetcode.MinimumTimeRequired([]int{1,2,4,7,8},2))
 	//fmt.Println(leetcode.MaxDistance([]int{1, 8, 3, 8, 3}))
 	//fmt.Println(leetcode.MaxDistance([]int{0, 1}))
-	fmt.Println(leetcode.SearchRange([]int{5, 7, 7, 8, 8, 10}, 4))
-	fmt.Println(leetcode.SearchRange([]int{5, 7, 7, 8, 8, 10}, 5))
-	fmt.Println(leetcode.SearchRange([]int{5, 7, 7, 8, 8, 10}, 7))
-	fmt.Println(leetcode.SearchRange([]int{5, 7, 7, 8, 8, 10}, 8))
-	fmt.Println(leetcode.SearchRange([]int{5, 7, 7, 8, 8, 10}, 11))
+	fmt.Println(leetcode.CountEven(30))
 
 }
