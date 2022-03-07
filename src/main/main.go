@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"src/algo"
 	"src/leetcode"
 )
 
@@ -23,7 +24,8 @@ func main() {
 	//fmt.Println(leetcode.MinimumTimeRequired([]int{1,2,4,7,8},2))
 	//fmt.Println(leetcode.MaxDistance([]int{1, 8, 3, 8, 3}))
 	//fmt.Println(leetcode.MaxDistance([]int{0, 1}))
-
+	nums := []int{1, 3, 0, 2, 9, 7}
+	fmt.Println(algo.MergeSort(nums))
 	fmt.Println(leetcode.GetAncestors(3, [][]int{{0, 1}, {2, 1}}))
 	//fmt.Println(leetcode.GetAncestors(8, [][]int{{0, 3}, {0, 4}, {1, 3}, {2, 4}, {2, 7}, {3, 5}, {3, 6}, {3, 7}, {4, 6}}))
 

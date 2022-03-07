@@ -128,6 +128,17 @@ func IOAPartition2(nums []int, leftEnd, rightEnd int) int {
 	return l + 1
 }
 
+//归并排序，递归
+func MergeSort(arr []int) []int {
+	if len(arr) <= 1 {
+		return arr
+	}
+	mid := len(arr) / 2
+	leftNums := MergeSort(arr[:mid])
+	rightNums := MergeSort(arr[mid:])
+	return merge(leftNums, rightNums)
+}
+
 func merge(leftNums, rightNums []int) []int {
 	l, r := 0, 0
 	result := make([]int, 0)
@@ -143,15 +154,6 @@ func merge(leftNums, rightNums []int) []int {
 	result = append(result, leftNums[l:]...)
 	result = append(result, rightNums[r:]...)
 	return result
-}
-func MergeSort(arr []int) []int {
-	if len(arr) <= 1 {
-		return arr
-	}
-	mid := len(arr) / 2
-	leftNums := MergeSort(arr[:mid])
-	rightNums := MergeSort(arr[mid:])
-	return merge(leftNums, rightNums)
 }
 
 func BubbleSort(nums []int) {
