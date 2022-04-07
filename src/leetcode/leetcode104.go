@@ -1,6 +1,9 @@
 package leetcode
 
+import "math"
+
 func dfs104(root *TreeNode) int {
+	a := math.MinInt64
 	if root == nil {
 		return 0
 	}

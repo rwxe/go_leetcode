@@ -32,6 +32,7 @@ func SearchRange(nums []int, target int) []int {
 		}
 	}
 	rightEnd = r
+	//有左边界就会有右边界，因此无需检测有效性
 	//if nums[r] != target || r < 0 {
 	//	return []int{-1, -1}
 	//}
