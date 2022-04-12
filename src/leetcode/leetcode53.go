@@ -1,7 +1,5 @@
 package leetcode
 
-import "src/algo"
-
 func MaxSubArray(nums []int) int {
 	if len(nums) == 1 {
 		return nums[0]
@@ -24,29 +22,38 @@ func MaxSubArray(nums []int) int {
 	return maxSum
 
 }
-func MaxSubArrayDP_1(nums []int) int {
-	dp := make([]int, len(nums))
-	dp[0] = nums[0]
-	for i := 1; i < len(nums); i++ {
-		dp[i] = algo.MaxInts(dp[i-1]+nums[i], nums[i])
-	}
-	return algo.MaxInts(dp...)
-}
-
 func MaxSubArrayDP_2(nums []int) int {
-	if len(nums) == 1 {
-		return nums[0]
+	max := func(a, b int) int {
+		if a > b {
+			return a
+		} else {
+			return b
+		}
 	}
 	maxSum := nums[0]
 	for i := 1; i < len(nums); i++ {
-		if nums[i-1] > 0 {
-			nums[i] += nums[i-1]
-		}
-		if maxSum < nums[i] {
-			maxSum = nums[i]
-		}
+		nums[i] = max(nums[i-1]+nums[i], nums[i])
+		maxSum = max(maxSum, nums[i])
 	}
 	return maxSum
+}
+func MaxSubArrayDP_1(nums []int) int {
+	max := func(items ...int) int {
+		theMax := items[0]
+		for i := range items {
+			if items[i] > theMax {
+				theMax = items[i]
+			}
+		}
+		return theMax
+	}
+	dp := make([]int, len(nums))
+	dp[0] = nums[0]
+	for i := 1; i < len(nums); i++ {
+		dp[i] = max(dp[i-1]+nums[i], nums[i])
+	}
+	return max(dp...)
+
 }
 
 // 使用线段树

@@ -6,7 +6,7 @@ import (
 )
 
 func MinStoneSum(piles []int, k int) (ans int) {
-	h := &hp{piles}
+	h := &hp5839{piles}
 	heap.Init(h)
 	for ; k > 0; k-- {
 		h.IntSlice[0] -= h.IntSlice[0] / 2
@@ -18,9 +18,8 @@ func MinStoneSum(piles []int, k int) (ans int) {
 	return
 }
 
-type hp struct{ sort.IntSlice }
+type hp5839 struct{ sort.IntSlice }
 
-func (h hp) Less(i, j int) bool { return h.IntSlice[i] > h.IntSlice[j] }
-func (hp) Push(interface{})     {}
-func (hp) Pop() (x interface{}) { return }
-
+func (h hp5839) Less(i, j int) bool { return h.IntSlice[i] > h.IntSlice[j] }
+func (hp5839) Push(interface{})     {}
+func (hp5839) Pop() (x interface{}) { return }

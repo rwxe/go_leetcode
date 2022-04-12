@@ -1,21 +1,21 @@
 package leetcode
 
 func firstUniqChar_1(s string) byte {
-	queue := make([]byte, 0)
+	window := make([]byte, 0)
 	showedUp := make(map[byte]int)
 	for i := range s {
 		if _, ok := showedUp[s[i]]; !ok {
-			queue = append(queue, s[i])
+			window = append(window, s[i])
 			showedUp[s[i]] = i
 		} else {
 			showedUp[s[i]] = -1
-			for len(queue) != 0 && showedUp[queue[0]] == -1 {
-				queue = queue[1:]
+			for len(window) != 0 && showedUp[window[0]] == -1 {
+				window = window[1:]
 			}
 		}
 	}
-	if len(queue) != 0 {
-		return queue[0]
+	if len(window) != 0 {
+		return window[0]
 	} else {
 		return ' '
 	}

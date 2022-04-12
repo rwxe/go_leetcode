@@ -14,10 +14,6 @@ func minimumDeletions(nums []int) int {
 	}
 	theMin, theMax := math.MaxInt64, math.MinInt64
 	theMinIndex, theMaxIndex := 0, 0
-   |-------
--------|
----|   |---
-[         ]
 	for i, v := range nums {
 		if v > theMax {
 			theMax = v
