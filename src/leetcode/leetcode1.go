@@ -4,6 +4,7 @@ import (
 	"sort"
 )
 
+//暴力双循环
 func TwoSum_0(nums []int, target int) []int {
 	for i := 0; i < len(nums); i++ {
 		for j := i + 1; j < len(nums); j++ {
@@ -16,6 +17,7 @@ func TwoSum_0(nums []int, target int) []int {
 	return []int{-1, -1}
 }
 
+//哈希表
 func TwoSum_1(nums []int, target int) []int {
 	// target-x:index
 	hashMap := make(map[int]int)
@@ -29,13 +31,18 @@ func TwoSum_1(nums []int, target int) []int {
 
 }
 
+// 双指针
 func TwoSum_2(nums []int, target int) []int {
 	// index，num
-	sortedIndex := make([][]int, len(nums))
+	sortedIndex := make([][2]int, len(nums))
 	for i, n := range nums {
-		sortedIndex[i] = []int{i, n}
+		sortedIndex[i] = [2]int{i, n}
 	}
-	sort.Slice(sortedIndex, func(i, j int) bool { return sortedIndex[i][1] < sortedIndex[j][1] })
+
+	sort.Slice(sortedIndex, func(i, j int) bool {
+		return sortedIndex[i][1] < sortedIndex[j][1]
+	})
+
 	for i, j := 0, len(nums)-1; i != j; {
 		sum := sortedIndex[i][1] + sortedIndex[j][1]
 		if sum < target {

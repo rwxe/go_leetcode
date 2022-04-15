@@ -13,10 +13,10 @@ func reachingPoints_3(sx int, sy int, tx int, ty int) bool {
 	}
 	if tx == sx && ty == sy {
 		return true
-	} else if tx == sx {
-		return ty > sy && (ty-sy)%tx == 0
-	} else if ty == sy {
-		return tx > sx && (tx-sx)%ty == 0
+	} else if tx == sx && ty > sy {
+		return (ty-sy)%tx == 0
+	} else if ty == sy && tx > sx {
+		return (tx-sx)%ty == 0
 	} else {
 		return false
 	}

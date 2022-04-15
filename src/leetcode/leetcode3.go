@@ -5,14 +5,14 @@ func lengthOfLongestSubstring_1(s string) int {
 	l := 0
 	showedUp := make(map[byte]bool)
 	maxLen := 0
-	for i := 0; i < len(s); i++ {
-		for showedUp[s[i]] {
+	for r := 0; r < len(s); r++ {
+		for showedUp[s[r]] {
 			delete(showedUp, s[l])
 			l++
 		}
-		showedUp[s[i]] = true
-		if maxLen < i-l+1 {
-			maxLen = i - l + 1
+		showedUp[s[r]] = true
+		if maxLen < r-l+1 {
+			maxLen = r - l + 1
 		}
 	}
 	return maxLen

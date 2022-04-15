@@ -1,5 +1,6 @@
 package leetcode
 
+// 双指针，滚动数组记录左右最高
 func Trap42_2(height []int) int {
 	max := func(a, b int) int {
 		if a > b {
@@ -25,6 +26,8 @@ func Trap42_2(height []int) int {
 	}
 	return water
 }
+
+// 数组记录每次左右最高
 func Trap42_1(height []int) int {
 	max := func(a, b int) int {
 		if a > b {
@@ -56,6 +59,8 @@ func Trap42_1(height []int) int {
 	}
 	return water
 }
+
+//每次暴力遍历左右最高
 func Trap42_0(height []int) int {
 	max := func(items ...int) int {
 		maxItem := items[0]
