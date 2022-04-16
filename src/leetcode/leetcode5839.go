@@ -5,6 +5,12 @@ import (
 	"sort"
 )
 
+type hp5839 struct{ sort.IntSlice }
+
+func (h hp5839) Less(i, j int) bool { return h.IntSlice[i] > h.IntSlice[j] }
+func (hp5839) Push(interface{})     {}
+func (hp5839) Pop() (x interface{}) { return }
+
 func MinStoneSum(piles []int, k int) (ans int) {
 	h := &hp5839{piles}
 	heap.Init(h)
@@ -17,9 +23,3 @@ func MinStoneSum(piles []int, k int) (ans int) {
 	}
 	return
 }
-
-type hp5839 struct{ sort.IntSlice }
-
-func (h hp5839) Less(i, j int) bool { return h.IntSlice[i] > h.IntSlice[j] }
-func (hp5839) Push(interface{})     {}
-func (hp5839) Pop() (x interface{}) { return }

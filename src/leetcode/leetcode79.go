@@ -148,7 +148,8 @@ func exist79_1(board [][]byte, word string) bool {
 		{0, -1}, //左
 		{0, +1}, //右
 	}
-
+	// cx,cy 为当前x,当前y
+	//cwi是当前需要匹配的字符串下标
 	var dfs func(cx, cy, cwi int) bool
 	dfs = func(cx, cy, cwi int) bool {
 
