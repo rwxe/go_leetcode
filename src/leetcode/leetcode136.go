@@ -4,10 +4,11 @@ import "sort"
 
 //位运算
 func SingleNumber_2(nums []int) int {
-	for i := 1; i < len(nums); i++ {
-		nums[i] ^= nums[i-1]
+	x := 0
+	for _, v := range nums {
+		x ^= v
 	}
-	return nums[len(nums)-1]
+	return x
 }
 
 //滑动窗口

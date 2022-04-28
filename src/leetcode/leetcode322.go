@@ -4,6 +4,13 @@ import "math"
 
 // DP
 func coinChange_2(coins []int, amount int) int {
+	min := func(a, b int) int {
+		if a < b {
+			return a
+		} else {
+			return b
+		}
+	}
 	dp := make([]int, amount+1)
 	for i := range dp {
 		dp[i] = amount + 1
@@ -11,77 +18,85 @@ func coinChange_2(coins []int, amount int) int {
 	dp[0] = 0
 	for i := range dp {
 		for _, coin := range coins {
-			if i >= coin {
-				if dp[i-coin] < dp[i] {
-					dp[i] = dp[i-coin] + 1
-				}
+			if i-coin >= 0 {
+				dp[i] = min(dp[i], dp[i-coin]+1)
 			}
 		}
 	}
-	if dp[amount] != amount+1 {
-		return dp[amount]
+	if result := dp[len(dp)-1]; result != amount+1 {
+		return result
 	} else {
 		return -1
-
 	}
-
 }
-func coinChange_1(coins []int, amount int) int {
-	memory := make(map[int]int)
-	var dp func(int) int
-	dp = func(currAmount int) int {
-		if _, ok := memory[currAmount]; ok {
-			return memory[currAmount]
-		} else if currAmount < 0 {
-			return -1
-		} else if currAmount == 0 {
-			return 0
-		} else {
-			currResult := math.MaxInt64
-			for i := range coins {
-				if subResult := dp(currAmount - coins[i]); subResult != -1 {
-					if subResult < currResult {
-						currResult = subResult + 1
-					}
-				}
-			}
-			if currResult != math.MaxInt64 {
-				memory[currAmount] = currResult
-				return currResult
-			} else {
-				return -1
-			}
 
+// 带记忆的递归
+func coinChange_1(coins []int, amount int) int {
+	min := func(a, b int) int {
+		if a < b {
+			return a
+		} else {
+			return b
 		}
 	}
-	return dp(amount)
+	memory := make(map[int]int)
+	var dfs func(amount int) int
+	dfs = func(amount int) int {
+		if amount == 0 {
+			return 0
+		} else if amount < 0 {
+			return -1
+		} else if res, ok := memory[amount]; ok {
+			return res
+		}
+		res := math.MaxInt64
+		for _, coin := range coins {
+			if subRes := dfs(amount - coin); subRes == -1 {
+				continue
+			} else {
+				res = min(res, subRes+1)
+			}
+		}
+		if res != math.MaxInt64 {
+			memory[amount] = res
+			return res
+		} else {
+			return -1
+		}
+	}
+	return dfs(amount)
 
 }
 
 //无记忆递归
 func coinChange_0(coins []int, amount int) int {
-	var dp func(int) int
-	dp = func(currAmount int) int {
-		if currAmount < 0 {
-			return -1
-		} else if currAmount == 0 {
-			return 0
+	min := func(a, b int) int {
+		if a < b {
+			return a
 		} else {
-			currResult := math.MaxInt64
-			for i := range coins {
-				if subResult := dp(currAmount - coins[i]); subResult != -1 {
-					if subResult < currResult {
-						currResult = subResult + 1
-					}
-				}
-			}
-			if currResult != math.MaxInt64 {
-				return currResult
-			} else {
-				return -1
-			}
-
+			return b
 		}
 	}
-	return dp(amount)
+	var dfs func(amount int) int
+	dfs = func(amount int) int {
+		if amount == 0 {
+			return 0
+		} else if amount < 0 {
+			return -1
+		}
+		res := math.MaxInt64
+		for _, coin := range coins {
+			if subRes := dfs(amount - coin); subRes == -1 {
+				continue
+			} else {
+				res = min(res, subRes+1)
+			}
+		}
+		if res != math.MaxInt64 {
+			return res
+		} else {
+			return -1
+		}
+	}
+	return dfs(amount)
 }
