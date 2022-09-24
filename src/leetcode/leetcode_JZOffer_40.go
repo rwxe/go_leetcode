@@ -5,76 +5,63 @@ import (
 	"sort"
 )
 
-type IntHeap_JZO40 []int
-
-func (h IntHeap_JZO40) Len() int { return len(h) }
-
-// 为了实现大根堆，Less在大于时返回小于
-func (h IntHeap_JZO40) Less(i, j int) bool { return h[i] > h[j] }
-func (h IntHeap_JZO40) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
-
-func (h *IntHeap_JZO40) Push(x interface{}) {
-	// Push and Pop use pointer receivers because they modify the slice's length,
-	// not just its contents.
-	*h = append(*h, x.(int))
+// 大根堆解法
+// 前k小用大根堆，前k大用小根堆
+type myHeapJZO40 struct {
+	sort.IntSlice
 }
 
-func (h *IntHeap_JZO40) Pop() interface{} {
-	old := *h
-	n := len(old)
-	x := old[n-1]
-	*h = old[0 : n-1]
+//因为大根堆，所以覆盖Less方法，返回较大值
+func (h myHeapJZO40) Less(i, j int) bool {
+	return h.IntSlice[i] > h.IntSlice[j]
+}
+
+func (h *myHeapJZO40) Push(x interface{}) {
+	h.IntSlice = append(h.IntSlice, x.(int))
+}
+func (h *myHeapJZO40) Pop() interface{} {
+	x := h.IntSlice[len(h.IntSlice)-1]
+	h.IntSlice = h.IntSlice[:len(h.IntSlice)-1]
 	return x
 }
 
-func GetLeastNumbers0(arr []int, k int) []int {
-	minSeq := make([]int, 0)
-	sort.Ints(arr)
-	count := 0
-	for _, v := range arr {
-		if count < k {
-			minSeq = append(minSeq, v)
-			count++
-		}
+func getLeastNumbers_0(arr []int, k int) []int {
+	if k == 0 {
+		return []int{}
 	}
-	return minSeq
-
-}
-
-func min(arr []int, start int) (int, int) {
-	min := arr[start]
-	index := start
-	for i := start; i < len(arr); i++ {
-		if arr[i] < min {
-			min = arr[i]
-			index = i
-		}
-	}
-	return index, min
-}
-
-// 局部排序
-func GetLeastNumbers1(arr []int, k int) []int {
-	for i := 0; i < k; i++ {
-		j, _ := min(arr, i)
-		arr[i], arr[j] = arr[j], arr[i]
-	}
-	return arr[:k]
-
-}
-
-// 大根堆
-func GetLeastNumbers2(arr []int, k int) []int {
-	h := make(IntHeap_JZO40, k)
-	hp := &h
-	copy(h, IntHeap_JZO40(arr[:k+1]))
-	heap.Init(hp)
+	heapArr := make([]int, k)
+	copy(heapArr, arr[:k])
+	// 重要，取指针
+	h := &myHeapJZO40{IntSlice: heapArr}
+	heap.Init(h)
 	for i := k; i < len(arr); i++ {
-		if arr[i] < h[0] {
-			heap.Pop(hp)
-			heap.Push(hp, arr[i])
+		if x := arr[i]; x < h.IntSlice[0] {
+			heap.Pop(h)
+			heap.Push(h, x)
 		}
 	}
-	return h
+	return h.IntSlice
 
+}
+
+// 快排
+func getLeastNumbers_1(arr []int, k int) []int {
+	// partition 返回第k-l+1个小的数
+	partition := func(leftEnd, rightEnd int) int {
+		pivot := arr[rightEnd]
+		l, r := leftEnd-1, leftEnd
+		for ; r < rightEnd; r++ {
+			if arr[r] <= pivot {
+				l++
+				arr[l], arr[r] = arr[r], arr[l]
+			}
+		}
+		arr[l+1], arr[rightEnd] = arr[rightEnd], arr[l+1]
+		return l + 1
+	}
+	partition(0, 1)
+	//mid==k，得到答案，return arr[:mid]
+	//mid<k，寻找右侧，p(mid+1,r,k)
+	//TODO
+	return []int{}
 }
