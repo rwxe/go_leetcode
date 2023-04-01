@@ -6,6 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Println(leetcode.LongestContinuousSubstring("yzus"))
-
+	fmt.Println(leetcode.MinNumBooths([]string{"acd", "bed", "accd"}))
 }
