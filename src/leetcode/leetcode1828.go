@@ -5,7 +5,7 @@ import (
 	"sync"
 )
 
-var result []int
+var result1828 []int
 var wg sync.WaitGroup
 
 func distance(p1x, p1y, p2x, p2y int) float64 {
@@ -13,13 +13,13 @@ func distance(p1x, p1y, p2x, p2y int) float64 {
 }
 func gogogo(p1x, p1y, p2x, p2y, r, i int) {
 	if distance(p1x, p1y, p2x, p2y) <= float64(r) {
-		result[i] += 1
+		result1828[i] += 1
 	}
 	wg.Done()
 
 }
 func CountPoints(points [][]int, queries [][]int) []int {
-	result = make([]int, len(queries))
+	result1828 = make([]int, len(queries))
 	for i, circle := range queries {
 		for _, p := range points {
 			//			if distance(p[0], p[1], circle[0], circle[1]) <= float64(circle[2]) {
@@ -32,7 +32,7 @@ func CountPoints(points [][]int, queries [][]int) []int {
 	}
 
 	wg.Wait()
-	return result
+	return result1828
 
 }
 func CountPoints2(points [][]int, queries [][]int) []int {
