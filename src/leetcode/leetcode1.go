@@ -31,16 +31,16 @@ func twoSum_1(nums []int, target int) []int {
 //排序双指针
 func twoSum_2(nums []int, target int) []int {
 	//value:index
-	newNums := make([][2]int, 0, len(nums))
+	numsIndex := make([][2]int, 0, len(nums))
 	for i, v := range nums {
-		newNums = append(newNums, [2]int{v, i})
+		numsIndex = append(numsIndex, [2]int{v, i})
 	}
-	sort.Slice(newNums, func(i, j int) bool {
-		return newNums[i][0] < newNums[j][0]
+	sort.Slice(numsIndex, func(i, j int) bool {
+		return numsIndex[i][0] < numsIndex[j][0]
 	})
-	for i, j := 0, len(newNums)-1; i < j; {
-		if sum := newNums[i][0] + newNums[j][0]; sum == target {
-			return []int{newNums[i][1], newNums[j][1]}
+	for i, j := 0, len(numsIndex)-1; i < j; {
+		if sum := numsIndex[i][0] + numsIndex[j][0]; sum == target {
+			return []int{numsIndex[i][1], numsIndex[j][1]}
 		} else if sum < target {
 			i++
 		} else if sum > target {

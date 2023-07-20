@@ -9,40 +9,32 @@ type ListNode struct {
 }
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	result := &ListNode{-1, nil}
-	var r *ListNode
-	carry := 0
-	for r = result; l1 != nil || l2 != nil; r = r.Next {
-		var sum int
-		if l1 != nil && l2 != nil {
-			sum = (l1.Val + l2.Val + carry) % 10
+	var p1, p2, long, short *ListNode
+	for p1, p2 = l1, l2; p1 != nil && p2 != nil; p1, p2 = p1.Next, p2.Next {
+	}
+	if p2 == nil {
+		long, short = l1, l2
+	} else {
+		long, short = l2, l1
+	}
 
-			carry = (l1.Val + l2.Val + carry) / 10
-
-			l1 = l1.Next
-			l2 = l2.Next
-		} else if l1 != nil && l2 == nil {
-			sum = (l1.Val + carry) % 10
-
-			carry = (l1.Val + carry) / 10
-
-			l1 = l1.Next
-
-		} else if l1 == nil && l2 != nil {
-			sum = (l2.Val + carry) % 10
-
-			carry = (l2.Val + carry) / 10
-
-			l2 = l2.Next
-
+	var carry, tempSum int
+	for p1, p2 = long, short; p1 != nil; p1 = p1.Next {
+		if p2 != nil {
+			tempSum = p1.Val + p2.Val + carry
+			p2 = p2.Next
+		} else if carry != 0 {
+			tempSum = p1.Val + carry
+		} else { //优化，无进位且短链遍历完了直接跳出
+			break
 		}
-		sumNode := &ListNode{sum, nil}
-		r.Next = sumNode
+		p1.Val = tempSum % 10
+		carry = tempSum / 10
 	}
-
 	if carry != 0 {
-		carryNode := &ListNode{1, nil}
-		r.Next = carryNode
+		for p1 = long; p1.Next != nil; p1 = p1.Next {
+		}
+		p1.Next = &ListNode{Val: 1, Next: nil}
 	}
-	return result.Next
+	return long
 }
