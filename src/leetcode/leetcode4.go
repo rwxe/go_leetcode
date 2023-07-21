@@ -32,33 +32,33 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 
 	i := left
 	j := totalLeft - i
-	var numsMLeftMax, numsMRightMin, numsNLeftMax, numsNRightMin int
+	var numsMILeft, numsMIRight, numsNJLeft, numsNJRight int
 	if i == 0 {
-		numsMLeftMax = math.MinInt64
+		numsMILeft = math.MinInt64
 	} else {
-		numsMLeftMax = numsM[i-1]
+		numsMILeft = numsM[i-1]
 	}
 	if i == m {
-		numsMRightMin = math.MaxInt64
+		numsMIRight = math.MaxInt64
 	} else {
-		numsMRightMin = numsM[i]
+		numsMIRight = numsM[i]
 	}
 	if j == 0 {
-		numsNLeftMax = math.MinInt64
+		numsNJLeft = math.MinInt64
 	} else {
-		numsNLeftMax = numsN[j-1]
+		numsNJLeft = numsN[j-1]
 	}
 	if j == n {
-		numsNRightMin = math.MaxInt64
+		numsNJRight = math.MaxInt64
 	} else {
-		numsNRightMin = numsN[j]
+		numsNJRight = numsN[j]
 	}
 
 	if (m+n)%2 == 0 {
-		return (math.Max(float64(numsMLeftMax), float64(numsNLeftMax)) +
-			math.Min(float64(numsMRightMin), float64(numsNRightMin))) / 2
+		return (math.Max(float64(numsMILeft), float64(numsNJLeft)) +
+			math.Min(float64(numsMIRight), float64(numsNJRight))) / 2
 	} else {
-		return math.Max(float64(numsMLeftMax), float64(numsNLeftMax))
+		return math.Max(float64(numsMILeft), float64(numsNJLeft))
 	}
 
 }
@@ -86,7 +86,7 @@ func findMedianSortedArrays_0(nums1 []int, nums2 []int) float64 {
 			currentIsP1 = false
 		} else if p2 >= len(nums2) {
 			currentIsP1 = true
-		} else {
+		} else { //p1 < len(nums1) && p2 < len(nums2) && nums1[p1] >= nums2[p2]
 			currentIsP1 = false
 		}
 
