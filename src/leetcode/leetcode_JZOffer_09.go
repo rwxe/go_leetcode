@@ -1,35 +1,43 @@
 package leetcode
 
+type stackJZO09 []int
+
+func (s *stackJZO09) push(x int) {
+	*s = append(*s, x)
+}
+func (s *stackJZO09) pop() int {
+	x := (*s)[len(*s)-1]
+	*s = (*s)[:len(*s)-1]
+	return x
+}
+func (s *stackJZO09) empty() bool {
+	return len(*s) == 0
+}
+
 type CQueueJZO09 struct {
-	stack1, stack2 []int
+	in, out stackJZO09
 }
 
 func ConstructorJZO09() CQueueJZO09 {
-	return CQueueJZO09{}
-}
-
-func (this *CQueueJZO09) AppendTail(value int) {
-	for len(this.stack1) != 0 {
-		node := this.stack1[len(this.stack1)-1]
-		this.stack1 = this.stack1[:len(this.stack1)-1]
-		this.stack2 = append(this.stack2, node)
-	}
-	this.stack1 = append(this.stack1, value)
-	for len(this.stack2) != 0 {
-		node := this.stack2[len(this.stack2)-1]
-		this.stack2 = this.stack2[:len(this.stack2)-1]
-		this.stack1 = append(this.stack1, node)
+	return CQueueJZO09{
+		in:  make(stackJZO09, 0),
+		out: make(stackJZO09, 0),
 	}
 }
 
-func (this *CQueueJZO09) DeleteHead() int {
-	if len(this.stack1) != 0 {
-		node := this.stack1[len(this.stack1)-1]
-		this.stack1 = this.stack1[:len(this.stack1)-1]
-		return node
-	} else {
+func (q *CQueueJZO09) AppendTail(value int) {
+	q.in.push(value)
+}
+
+func (q *CQueueJZO09) DeleteHead() int {
+	if q.in.empty() && q.out.empty() {
 		return -1
+	} else if q.out.empty() {
+		for !q.in.empty() {
+			q.out.push(q.in.pop())
+		}
 	}
+	return q.out.pop()
 }
 
 /**

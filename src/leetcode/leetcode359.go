@@ -17,13 +17,13 @@ type Logger struct {
 	maxSliceLen int //出现过的最长slice长度
 }
 
-//调试用，观察字段出现的最长长度
+// 调试用，观察字段出现的最长长度
 func (l *Logger) PrintDebugMaxLen() {
 	fmt.Println("map", l.maxMapLen)
 	fmt.Println("slice", l.maxSliceLen)
 }
 
-//调试用，记录字段出现的最长长度
+// 调试用，记录字段出现的最长长度
 func (l *Logger) debuglogMaxLen() {
 	max := func(a, b int) int {
 		if a > b {
@@ -49,7 +49,7 @@ func Constructor359() Logger {
 		capacity:  CAPACITY}
 }
 
-//简单的实现，直接在map中记录时间戳，map会无限增长
+// 简单的实现，直接在map中记录时间戳，map会无限增长
 func (l *Logger) ShouldPrintMessageDefault(ts int, msg string) bool {
 	l.debuglogMaxLen()
 	if lastTs, ok := l.logHist[msg]; ok && ts-lastTs < l.timeLimit {
@@ -59,7 +59,7 @@ func (l *Logger) ShouldPrintMessageDefault(ts int, msg string) bool {
 	return true
 }
 
-//简单的LRU实现，但是map仍然可能突然增长
+// 简单的LRU实现，但是map仍然可能突然增长
 func (l *Logger) ShouldPrintMessageLRU(ts int, msg string) bool {
 	l.debuglogMaxLen()
 	// get

@@ -5,56 +5,65 @@ type queue232 []int
 func (q *queue232) push(val int) {
 	*q = append(*q, val)
 }
+func (q *queue232) top() int {
+	x := (*q)[0]
+	return x
+}
 func (q *queue232) pop() int {
-	poped := (*q)[0]
+	x := q.top()
 	(*q) = (*q)[1:]
-	return poped
+	return x
 }
 func (q *queue232) empty() bool {
-	if len(*q) == 0 {
-		return true
+	return len(*q) == 0
+}
+
+type MyStack225 struct {
+	q1, q2 queue232
+}
+
+func Constructor225() MyStack225 {
+	return MyStack225{
+		q1: make(queue232, 0),
+		q2: make(queue232, 0),
+	}
+}
+
+func (s *MyStack225) Push(x int) {
+	var emptyQ, nonemptyQ *queue232
+	if s.q1.empty() {
+		emptyQ, nonemptyQ = &s.q1, &s.q2
 	} else {
-		return false
+		emptyQ, nonemptyQ = &s.q2, &s.q1
+	}
+	emptyQ.push(x)
+	for !nonemptyQ.empty() {
+		emptyQ.push(nonemptyQ.pop())
 	}
 }
 
-type MyStack struct {
-	a,b queue232
-}
-
-/** Initialize your data structure here. */
-func Constructor225() MyStack {
-	return MyStack{}
-}
-
-/** Push element x onto stack. */
-func (this *MyStack) Push(x int) {
-	for !this.a.empty(){
-		this.b.push(this.a.pop())
+func (s *MyStack225) Pop() int {
+	var nonemptyQ *queue232
+	if !s.q1.empty() {
+		nonemptyQ = &s.q1
+	} else {
+		nonemptyQ = &s.q2
 	}
-	this.a.push(x)
-	for !this.b.empty(){
-		this.a.push(this.b.pop())
+	return nonemptyQ.pop()
+}
+
+func (s *MyStack225) Top() int {
+	var nonemptyQ *queue232
+	if !s.q1.empty() {
+		nonemptyQ = &s.q1
+	} else {
+		nonemptyQ = &s.q2
 	}
-
+	return nonemptyQ.top()
 }
 
-/** Removes the element on top of the stack and returns that element. */
-func (this *MyStack) Pop() int {
-	return this.a.pop()
-
-}
-
-/** Get the top element. */
-func (this *MyStack) Top() int {
-	return this.a[0]
-
-}
-
-/** Returns whether the stack is empty. */
-func (this *MyStack) Empty() bool {
-	return this.a.empty()
-
+func (s *MyStack225) Empty() bool {
+	return s.q1.empty() && s.q2.empty()
 }
 
 /**
