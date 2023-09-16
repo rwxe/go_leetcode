@@ -1,4 +1,4 @@
-from typing import Dict, List, Union
+from typing import Dict,  Optional, Union
 
 
 class DoubleListNode(object):
@@ -11,11 +11,11 @@ class DoubleListNode(object):
         node: 后指针
     '''
 
-    def __init__(self, key=None, value=None):
-        self.key: int = key
-        self.value: int = value
-        self.prev: DoubleListNode = None
-        self.next: DoubleListNode = None
+    def __init__(self, key: Optional[int] = None, value: Optional[int] = None):
+        self.key: Optional[int] = key
+        self.value: Optional[int] = value
+        self.prev: Optional[DoubleListNode] = None
+        self.next: Optional[DoubleListNode] = None
 
 
 class DoubleList(object):
@@ -41,9 +41,11 @@ class DoubleList(object):
         Returns:
             None
         Raise:
-            None
+            AttributeError: 找不到头节点的后节点
         '''
         head_next = self.head.next
+        if head_next is None:
+            raise AttributeError("head_next is None")
         self.head.next = node
         head_next.prev = node
         node.next = head_next
@@ -57,8 +59,10 @@ class DoubleList(object):
         Returns:
             None
         Raise:
-            None
+            AttributeError: 找不到node的前后节点
         '''
+        if node.prev is None or node.next is None:
+            raise AttributeError("node next or prev is None")
         node.prev.next = node.next
         node.next.prev = node.prev
 
@@ -70,12 +74,14 @@ class DoubleList(object):
         Returns:
             如果链表包含有用数据，则返回被删除的节点实例。否则返回None
         Raise:
-            None
+            AttributeError: 找不到tail的前节点
         '''
         if self.head.next == self.tail:
             return None
         else:
-            node = self.tail.prev
+            if self.tail.prev is None:
+                raise AttributeError("tail prev is None")
+            node: DoubleListNode = self.tail.prev
             self.remove(node)
             return node
 
@@ -137,6 +143,8 @@ class LRUCache(object):
             None
         '''
         node = self.cache.remove_from_tail()
+        if node is None or node.key is None:
+            return
         del self.keymap[node.key]
 
     def set_most_recently(self, key: int):
@@ -164,10 +172,11 @@ class LRUCache(object):
             None
         '''
         if key in self.keymap:
-            self.set_most_recently(key)
-            return self.keymap[key].value
-        else:
-            return -1
+            value = self.keymap[key].value
+            if value is not None:
+                self.set_most_recently(key)
+                return value
+        return -1
 
     def put(self, key: int, value: int):
         '''
