@@ -30,7 +30,6 @@ func main() {
 	B := *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(*(**int)(unsafe.Pointer(&l)))) + 9))
 	fmt.Println("\nthe hmap B size", B)
 	printAllocMain()
-	l.PrintDebugMaxLen()
 
 	//	for k := range l.LogHist {
 	//		if delTimes, ok := l.DeletedKey[k]; ok {
