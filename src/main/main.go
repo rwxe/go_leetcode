@@ -14,7 +14,6 @@ func printAllocMain() {
 	fmt.Printf("%d MB\n", m.Alloc/1024/1024)
 }
 func main() {
-
 	var words = []string{}
 	for i := 'a'; i <= 'z'; i++ {
 		// 将 rune 转换为字符串并添加到切片中
