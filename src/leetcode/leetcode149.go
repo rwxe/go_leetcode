@@ -1,6 +1,56 @@
 package leetcode
 
 func maxPoints(points [][]int) int {
+	n := len(points)
+	if n <= 2 {
+		return n
+	}
+	gcd := func(m, n int) int {
+		for n != 0 {
+			m, n = n, m%n
+		}
+		return m
+	}
+	abs := func(x int) int {
+		if x < 0 {
+			x = -x
+		}
+		return x
+	}
+	maxCount := 0
+	for i, p := range points {
+		//每一轮遍历，count map要重置，否值会将个平行的点一起加入
+		count := make(map[[2]int]int)
+		//优化，此时已经获得最大值
+		if maxCount >= n-i || maxCount > n/2 {
+			break
+		}
+		for _, q := range points[i+1:] {
+			x, y := p[0]-q[0], p[1]-q[1]
+			if x == 0 {
+				y = 1
+			} else if y == 0 {
+				x = 1
+			} else {
+				if y < 0 {
+					x, y = -x, -y
+				}
+				g := gcd(abs(x), abs(y))
+				x /= g
+				y /= g
+			}
+			k := [2]int{y, x}
+			count[k]++
+			// 这里要加1，加上i
+			if currCount := count[k] + 1; currCount > maxCount {
+				maxCount = currCount
+			}
+		}
+	}
+	return maxCount
+}
+
+func maxPoints_1(points [][]int) int {
 	type linearEquation struct {
 		//Ax+By+C=0
 		A, B, C int
@@ -45,8 +95,8 @@ func maxPoints(points [][]int) int {
 			le := genLinearEquation(pi, pj)
 			if leMap[le] == nil {
 				leMap[le] = make(map[[2]int]struct{})
+				leMap[le][pi] = struct{}{}
 			}
-			leMap[le][pi] = struct{}{}
 			leMap[le][pj] = struct{}{}
 			if currCount := len(leMap[le]); currCount > maxCount {
 				maxCount = currCount
@@ -55,53 +105,4 @@ func maxPoints(points [][]int) int {
 	}
 	return maxCount
 
-}
-
-func MaxPoints_2(points [][]int) int {
-	n := len(points)
-	if n <= 2 {
-		return n
-	}
-	gcd := func(m, n int) int {
-		for n != 0 {
-			m, n = n, m%n
-		}
-		return m
-	}
-	abs := func(x int) int {
-		if x < 0 {
-			x = -x
-		}
-		return x
-	}
-	maxCount := 0
-	for i, p := range points {
-		//每一轮遍历，count map要重置，否值会将个平行的点一起加入
-		count := make(map[[2]int]int)
-		//优化，此时已经获得最大值
-		if maxCount >= n-i || maxCount > n/2 {
-			break
-		}
-		for _, q := range points[i+1:] {
-			x, y := p[0]-q[0], p[1]-q[1]
-			if x == 0 {
-				y = 1
-			} else if y == 0 {
-				x = 1
-			} else {
-				if y < 0 {
-					x, y = -x, -y
-				}
-				g := gcd(abs(x), abs(y))
-				x /= g
-				y /= g
-			}
-			k := [2]int{y, x}
-			count[k]++
-			if currCount := count[k] + 1; currCount > maxCount {
-				maxCount = currCount
-			}
-		}
-	}
-	return maxCount
 }
